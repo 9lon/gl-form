@@ -10,26 +10,24 @@
 <link rel="import" href="gl-form-textarea-behavior.html">
 <link rel="import" href="gl-form-dropdownmenu-behavior.html">
 
+<link rel="import" href="gl-form-input.html">
+
+
 
 <dom-module id="gl-form">
     <style>
-        /*paper-dropdown-menu{
-            --paper-input-container-label:{
-                color: green;
-            }
-            --paper-input-container-underline:{
-              background-color: green;
-            };
-        }*/
         .container{
             padding: 20px;
         }
     </style>
     <template>
         <div class="container">
-            <paper-input label="Input Number" pattern="[0-9]*" auto-varlidate error-message="Please Input Number" required></paper-input>
+            <!--<template is="dom-repeat" items="{{data}}">-->
+                 <!--<div>Data: <span>{{item.mydata}}</span></div>-->
+                <gl-form-input></gl-form-input>
+            <!--</template>-->
         </div>
-        <div class="container">
+        <!--<div class="container">
             <paper-textarea label="Input Data" error-message="Please data" required></paper-textarea> 
         </div>
         <div class="container">
@@ -41,16 +39,16 @@
                     <paper-item value="diplodocus">diplodocus</paper-item>
                 </paper-listbox>
             </paper-dropdown-menu>
-        </div>
+        </div>-->
     </template>
     <script>
         Polymer({
-            is: 'gl-form',
-              behaviors: [
-                  GlFormInputBehavior,
-                  GlFormTextareaBehavior,
-                  GlFormDropdownmenuBehavior
-            ]
+            is: 'gl-form'
+            //   behaviors: [
+            //     //   GlFormInputBehavior
+            //     //   GlFormTextareaBehavior,
+            //     //   GlFormDropdownmenuBehavior
+            // ]
         });
     </script>
 </dom-module>

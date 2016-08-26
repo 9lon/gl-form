@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="import" href="../bower_components/polymer/polymer.html">
+    <link rel="import" href="gl-form-input-behavior.html">
+    <link rel="import" href="../bower_components/paper-input/paper-input.html">
+
+</head>
+<body>
+
+
+<test-form></test-form>
+<dom-module id="test-form">
+    <template>
+        
+        <template id="temp" is="dom-repeat" items="{{obj}}">
+            
+            <template is="dom-repeat" items="{{obj2}}">
+                <paper-input class="test" label="text" auto-validate required></paper-input>
+            </template>
+            
+            <paper-input label="text" auto-validate required></paper-input>
+        </template>
+        <button on-tap="changeArr">click</button>
+    </template>
+    <script>
+        Polymer({
+            is: 'test-form',
+            behaviors:[GlFormInputBehavior],
+            properties:{
+                obj:{
+                    type:Array,
+                    value:[0,1]
+                },
+                obj2:{
+                    type:Array,
+                    value:[0,1,3]
+                }
+            },
+            ready:function(){
+                this.listen(this.$.temp, 'dom-change', 'domChange');
+                
+            },
+            domChange:function(){
+                console.log('change');
+                console.log(Polymer.dom(this.root).querySelectorAll('.test'));
+            },
+            changeArr:function(){
+                this.push('obj2',3);
+            }
+        });
+    </script>
+</dom-module>
+
+</body>
+</html>
+

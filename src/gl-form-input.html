@@ -1,0 +1,22 @@
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="gl-form-input">
+    <template is="dom-repeat" items="{{employees}}">
+        <div>First name: <span>{{item.first}}</span></div>
+        <div>Last name: <span>{{item.last}}</span></div>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'gl-form-input',
+           ready: function() {
+        this.employees = [
+            {first: 'Bob', last: 'Smith'},
+            {first: 'Sally', last: 'Johnson'}
+
+        ];
+      }
+        });
+    </script>
+</dom-module>

@@ -6,6 +6,9 @@
                 this.listen(el, 'blur', 'InputOnBlur');
                 this.listen(el, 'focus', 'InputOnFocus');
             }) 
+
+            //var temp = Polymer.dom(this.root).querySelectorAll('template');
+            //console.log(temp);
         },
         detached:function(){
             var elAll = Polymer.dom(this.root).querySelectorAll('paper-input');
