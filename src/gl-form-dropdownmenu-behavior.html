@@ -1,0 +1,36 @@
+<script>
+    GlFormDropdownmenuBehavior = {
+        ready:function(){
+            var elAll = Polymer.dom(this.root).querySelectorAll('paper-dropdown-menu');
+            elAll.map((el)=>{
+                this.listen(el, 'blur', 'DropdownMenuOnBlur');
+                this.listen(el, 'focus', 'DropdownMenuOnFocus');
+            }) 
+        },
+        detached:function(){
+            var elAll = Polymer.dom(this.root).querySelectorAll('paper-dropdown-menu');
+            elAll.map((el)=>{
+                this.unlisten(el, 'blur', 'DropdownMenuOnBlur');
+                this.unlisten(el, 'focus', 'DropdownMenuOnFocus');
+            }) 
+        },
+        DropdownMenuOnBlur : function(e){
+            console.log(e.target.value);
+            if(e.target.value){
+                console.log('DropDownMenuSucess!!');
+                e.target.customStyle['--paper-input-container-color'] =  "green";
+                e.target.customStyle['--paper-input-container-underline'] = "green";
+            }
+            else {
+                 e.target.customStyle['--paper-input-container-color'] =  "red";
+                e.target.customStyle['--paper-input-container-underline'] = "green";
+            }
+            e.target.updateStyles();
+        },
+        DropdownMenuOnFocus : function(e){
+            console.log('DropDownMenufocus');
+            e.target.customStyle['--paper-input-container-color'] =  "#737373";
+            e.target.updateStyles();
+        }
+    }
+</script>
