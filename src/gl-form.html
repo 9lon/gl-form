@@ -1,16 +1,50 @@
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
-<link rel="import" href="gl-input-behavior.html">
+<link rel="import" href="../bower_components/paper-input/paper-textarea.html">
+
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-light.html">
+
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+
+
+
+<link rel="import" href="gl-form-input-behavior.html">
+<link rel="import" href="gl-form-textarea-behavior.html">
 
 <dom-module id="gl-form">
     <template>
-        <paper-input label="Input Number" pattern="[0-9]*" auto-varlidate error-message="Please Input Number" required></paper-input>
+        <div class="container">
+            <paper-input label="Input Number" pattern="[0-9]*" auto-varlidate error-message="Please Input Number" required></paper-input>
+        </div>
+        <div class="container">
+            <paper-textarea label="Input Data" error-message="Please data" required></paper-textarea> 
+        </div>
+        <div class="container">
+             <paper-dropdown-menu label="Dinosaurs">
+            <paper-listbox class="dropdown-content">
+                <paper-item>allosaurus</paper-item>
+                <paper-item>brontosaurus</paper-item>
+                <paper-item>carcharodontosaurus</paper-item>
+                <paper-item>diplodocus</paper-item>
+            </paper-listbox>
+            </paper-dropdown-menu>
+        </div>
+      
+       
+        
+       
     </template>
     <script>
         Polymer({
             is: 'gl-form',
-              behaviors: [GlInputBehavior]
+              behaviors: [
+                  GlFormInputBehavior,
+                  GlFormTextareaBehavior
+            ]
         });
     </script>
 </dom-module>

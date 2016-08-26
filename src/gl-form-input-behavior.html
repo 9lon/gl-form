@@ -1,20 +1,20 @@
 <script>
-    GlInputBehavior = {
+    GlFormInputBehavior = {
         ready:function(){
             var elAll = Polymer.dom(this.root).querySelectorAll('paper-input');
             elAll.map((el)=>{
-                this.listen(el, 'blur', 'onBlur');
-                this.listen(el, 'focus', 'onFocus');
+                this.listen(el, 'blur', 'InputOnBlur');
+                this.listen(el, 'focus', 'InputOnFocus');
             }) 
         },
         detached:function(){
             var elAll = Polymer.dom(this.root).querySelectorAll('paper-input');
             elAll.map((el)=>{
-                this.unlisten(el, 'blur', 'onBlur');
-                this.unlisten(el, 'focus', 'onFocus');
+                this.unlisten(el, 'blur', 'InputOnBlur');
+                this.unlisten(el, 'focus', 'InputOnFocus');
             }) 
         },
-        onBlur : function(e){
+        InputOnBlur : function(e){
             console.log(e.target.validate());
             if(e.target.validate()){
                 console.log('Sucess!!');
@@ -22,7 +22,7 @@
             }
             e.target.updateStyles();
         },
-        onFocus : function(e){
+        InputOnFocus : function(e){
             console.log('focus');
             e.target.customStyle['--paper-input-container-color'] =  "#737373";
             e.target.updateStyles();

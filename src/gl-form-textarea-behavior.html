@@ -1,0 +1,31 @@
+<script>
+    GlFormTextareaBehavior = {
+        ready:function(){
+            var elAll = Polymer.dom(this.root).querySelectorAll('paper-textarea');
+            elAll.map((el)=>{
+                this.listen(el, 'blur', 'TextareaOnBlur');
+                this.listen(el, 'focus', 'TextareaOnFocus');
+            }) 
+        },
+        detached:function(){
+            var elAll = Polymer.dom(this.root).querySelectorAll('paper-textarea');
+            elAll.map((el)=>{
+                this.unlisten(el, 'blur', 'TextareaOnBlur');
+                this.unlisten(el, 'focus', 'TextareaOnFocus');
+            }) 
+        },
+        TextareaOnBlur : function(e){
+            console.log(e.target.validate());
+            if(e.target.validate()){
+                console.log('textareaSucess!!');
+                e.target.customStyle['--paper-input-container-color'] =  "green";
+            }
+            e.target.updateStyles();
+        },
+        TextareaOnFocus : function(e){
+            console.log('textareafocus');
+            e.target.customStyle['--paper-input-container-color'] =  "#737373";
+            e.target.updateStyles();
+        }
+    }
+</script>
