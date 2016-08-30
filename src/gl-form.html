@@ -22,12 +22,10 @@
     </style>
     <template>
         <div class="container">
-            <!--<template is="dom-repeat" items="{{data}}">-->
-                 <!--<div>Data: <span>{{item.mydata}}</span></div>-->
-                <gl-form-input></gl-form-input>
-            <!--</template>-->
+            <!--<paper-input label="Input Data" error-messae="Please input data."></paper-input>-->
+            <gl-form-input paper-input label="Input Data" auto-validate required></gl-form-input>
         </div>
-        <!--<div class="container">
+        <div class="container">
             <paper-textarea label="Input Data" error-message="Please data" required></paper-textarea> 
         </div>
         <div class="container">
@@ -39,16 +37,16 @@
                     <paper-item value="diplodocus">diplodocus</paper-item>
                 </paper-listbox>
             </paper-dropdown-menu>
-        </div>-->
+        </div>
     </template>
     <script>
         Polymer({
-            is: 'gl-form'
-            //   behaviors: [
-            //     //   GlFormInputBehavior
-            //     //   GlFormTextareaBehavior,
-            //     //   GlFormDropdownmenuBehavior
-            // ]
+            is: 'gl-form',
+              behaviors: [
+                  GlFormInputBehavior,
+                  GlFormTextareaBehavior,
+                  GlFormDropdownmenuBehavior
+            ]
         });
     </script>
 </dom-module>
