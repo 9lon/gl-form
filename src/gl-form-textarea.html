@@ -50,6 +50,37 @@
                 Polymer.PaperInputBehavior,
                 Polymer.IronFormElementBehavior
             ],
+             properties: {
+                _ariaLabelledBy: {
+                    observer: '_ariaLabelledByChanged',
+                    type: String
+                },
+
+                _ariaDescribedBy: {
+                    observer: '_ariaDescribedByChanged',
+                    type: String
+                },
+                rows: {
+                    type: Number,
+                    value: 1
+                },
+                maxRows: {
+                type: Number,
+                value: 0
+                }
+            },
+
+            _ariaLabelledByChanged: function(ariaLabelledBy) {
+            this.$.input.textarea.setAttribute('aria-labelledby', ariaLabelledBy);
+            },
+
+            _ariaDescribedByChanged: function(ariaDescribedBy) {
+            this.$.input.textarea.setAttribute('aria-describedby', ariaDescribedBy);
+            },
+
+            get _focusableElement() {
+            return this.$.input.textarea;
+            },
             InputOnBlur : function(e){
                 console.log(e.target.validate());
                 if(e.target.validate()){
