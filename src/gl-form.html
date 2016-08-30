@@ -11,13 +11,13 @@
 <link rel="import" href="gl-form-dropdownmenu-behavior.html">
 
 <link rel="import" href="gl-form-input.html">
-
+<link rel="import" href="gl-form-textarea.html">
 
 
 <dom-module id="gl-form">
     <style>
         .container{
-            padding: 20px;
+            padding: 10px;
         }
         h3{
             font-family: Arial, Helvetica, sans-serif;
@@ -28,14 +28,17 @@
             <!--<paper-input  label="this input requires some text" required auto-validate error-message="needs some text!"></paper-input>-->
             <h3>Use Dom-bind</h3>
             <template is="dom-bind">
-                <gl-form-input  label="this input requires some text" required auto-validate error-message="needs some text!"></gl-form-input>
+                <gl-form-textarea label="text-area : " required auto-validate error-message="needs some text!"></gl-form-textarea>
             </template>
 
             <h3>Use Dom-repeat</h3>
             <template is="dom-repeat" items="{{myData}}">
-                <gl-form-input  label="{{item.data}}" required auto-validate error-message="needs some text!"></gl-form-input>
+               <gl-form-textarea label="text-area : " required auto-validate error-message="needs some text!"></gl-form-textarea>
             </template>
 
+            <h3>Complete Module</h3>
+            <p>gl-form-input</p>
+            <gl-form-input  label="this input requires some text" required auto-validate error-message="needs some text!"></gl-form-input>
         </div>
     </template>
     <script>
