@@ -1,5 +1,5 @@
 
-<!--<link rel="import" href="../bower_components/paper-input/paper-input.html">-->
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../bower_components/iron-input/iron-input.html">
 <link rel="import" href="../bower_components/iron-form-element-behavior/iron-form-element-behavior.html">
 <link rel="import" href="../bower_components/paper-input/paper-input-error.html">
@@ -15,8 +15,9 @@
 <dom-module id="gl-form-input">
     
     <template>
-   <paper-input-container no-label-float="[[noLabelFloat]]" always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel,placeholder)]]" auto-validate$="[[autoValidate]]" disabled$="[[disabled]]" invalid="[[invalid]]">
-       
+        <!--<paper-input label="Text Input : " required></paper-input>-->
+    <paper-input-container no-label-float="[[noLabelFloat]]" always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel,placeholder)]]" auto-validate$="[[autoValidate]]" disabled$="[[disabled]]" invalid="[[invalid]]">
+
         <content select="[prefix]"></content>
 
         <label hidden$="[[!label]]" aria-hidden="true" for="input">[[label]]</label>
@@ -54,7 +55,7 @@
             autosave$="[[autosave]]"
             results$="[[results]]"
             accept$="[[accept]]"
-            multiple$="[[multiple]]" on-blur="InputOnBlur" on-focus="InputOnFocus">
+            multiple$="[[multiple]]">
 
         <content select="[suffix]"></content>
 
@@ -75,20 +76,7 @@
                 GlFormInputBehavior,
                 Polymer.IronFormElementBehavior,
                 Polymer.PaperInputBehavior
-            ],
-            InputOnBlur : function(e){
-            console.log(e.target.validate());
-                if(e.target.validate()){
-                    console.log('Sucess!!');
-                    this.customStyle['--paper-input-container-color'] =  "green";
-                }
-                this.updateStyles();
-            },
-            InputOnFocus : function(e){
-                console.log('focus');
-                this.customStyle['--paper-input-container-color'] =  "#737373";
-                this.updateStyles();
-            }
-            });
+            ]
+        });
     </script>
 </dom-module>

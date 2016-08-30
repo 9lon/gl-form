@@ -19,34 +19,41 @@
         .container{
             padding: 20px;
         }
+        h3{
+            font-family: Arial, Helvetica, sans-serif;
+        }
     </style>
     <template>
         <div class="container">
-            <!--<paper-input label="Input Data" error-messae="Please input data."></paper-input>-->
-            <gl-form-input paper-input label="Input Data" auto-validate required></gl-form-input>
-        </div>
-        <div class="container">
-            <paper-textarea label="Input Data" error-message="Please data" required></paper-textarea> 
-        </div>
-        <div class="container">
-            <paper-dropdown-menu label="Dinosaurs">
-                <paper-listbox class="dropdown-content">
-                    <paper-item value="allosaurus">allosaurus</paper-item>
-                    <paper-item value="brontosaurus">brontosaurus</paper-item>
-                    <paper-item value="carcharodontosaurus">carcharodontosaurus</paper-item>
-                    <paper-item value="diplodocus">diplodocus</paper-item>
-                </paper-listbox>
-            </paper-dropdown-menu>
+            <!--<paper-input  label="this input requires some text" required auto-validate error-message="needs some text!"></paper-input>-->
+            <h3>Use Dom-bind</h3>
+            <template is="dom-bind">
+                <gl-form-input  label="this input requires some text" required auto-validate error-message="needs some text!"></gl-form-input>
+            </template>
+
+            <h3>Use Dom-repeat</h3>
+            <template is="dom-repeat" items="{{myData}}">
+                <gl-form-input  label="{{item.data}}" required auto-validate error-message="needs some text!"></gl-form-input>
+            </template>
+
         </div>
     </template>
     <script>
         Polymer({
             is: 'gl-form',
-              behaviors: [
-                  GlFormInputBehavior,
-                  GlFormTextareaBehavior,
-                  GlFormDropdownmenuBehavior
-            ]
+            ready : function(){
+                this.myData=[
+                    {
+                        data:'data : 1',
+                    },
+                    {
+                        data:'data : 2',
+                    },
+                    {
+                        data:'data : 3',
+                    }
+                ]
+            }
         });
     </script>
 </dom-module>
