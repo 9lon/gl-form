@@ -19,7 +19,6 @@
     <template>
     <style include="paper-dropdown-menu-shared-styles"></style>
 
-    <!-- this div fulfills an a11y requirement for combobox, do not remove -->
     <span role="button"></span>
     <paper-menu-button
       id="menuButton"
@@ -37,7 +36,6 @@
       on-focus="DropdownMenuOnFocus">
       <div class="dropdown-trigger">
         <paper-ripple></paper-ripple>
-        <!-- paper-input has type="text" for a11y, do not remove -->
         <paper-input
           type="text"
           invalid="[[invalid]]"
@@ -48,7 +46,9 @@
           error-message="[[errorMessage]]"
           always-float-label="[[alwaysFloatLabel]]"
           no-label-float="[[noLabelFloat]]"
-          label="[[label]]">
+          label="[[label]]"
+            on-blur="DropdownMenuOnBlur"
+           on-focus="DropdownMenuOnFocus">
           <iron-icon icon="paper-dropdown-menu:arrow-drop-down" suffix></iron-icon>
         </paper-input>
       </div>
@@ -188,20 +188,25 @@
                     e.setAttribute('aria-expanded', openState);
                 }
             },
+            ready:function(){
+                console.log('ready');
+            },
             DropdownMenuOnBlur : function(e){
                 console.log(e.target.value);
                 if((e.target.is)=="paper-dropdown-menu"){
                     //console.log(e.target.validate());
                 }  
                 else {
-                    console.log(e.target.parentNode.validate());
-                    if(e.target.parentNode.validate()){
+                   // console.log(e.target.parentNode.validate());
+                    if(e.target.value){
                         console.log('sucess!!');
                         this.customStyle['--paper-input-container-color'] =  "green";
                         this.customStyle['--paper-input-container-underline'] = "green";
                     }
                     else {
                         console.log('failed');
+                        this.customStyle['--paper-input-container-color'] =  "red";
+                        this.customStyle['--paper-input-container-underline'] = "red";
                     }
                      this.updateStyles();
                 }
@@ -211,7 +216,6 @@
                 this.customStyle['--paper-input-container-color'] =  "#737373";
                 this.updateStyles();
             }
-         
         });
     </script>
 </dom-module>
