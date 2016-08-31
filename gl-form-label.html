@@ -11,7 +11,7 @@
               opacity: 1;
           }
          --paper-input-container-label:{
-              font-size:18px;
+              font-size: var(--gl-fontsize-label);
           }     
        }
     </style>
@@ -24,18 +24,29 @@
  
   <script>
       
-    Polymer({
-      is:'gl-form-label',
-      properties:{
-          label:{
-              type:String,
-              value:'Title'
-          },
-          value:{
-              type:String,
-              value:'Text'
-          }
-      }
+        Polymer({
+        is:'gl-form-label',
+        properties:{
+            label:{
+                type:String,
+                value:'Title'
+            },
+            value:{
+                type:String,
+                value:'Text'
+            },
+            fontSizeLabel:{
+                type:String,
+                value:'35px'
+            },
+        },
+        ready:function(){
+            console.log('test');
+            console.log('fontsize:',this.fontSizeLabel);
+            this.customStyle['--gl-fontsize-label'] = this.fontSizeLabel;
+            this.updateStyles();
+            // this.customStyle['--el-color-bglabel'] = this.colorBglabel;
+        }
     });
       
   </script>

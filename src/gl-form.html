@@ -12,7 +12,7 @@
 
 <link rel="import" href="gl-form-input.html">
 <link rel="import" href="gl-form-textarea.html">
-<link rel="import" href="gl-form-dropdownMenu.html">
+<link rel="import" href="gl-form-dropdown-menu.html">
 
 <dom-module id="gl-form">
     <style>
@@ -28,26 +28,26 @@
             <!--<paper-input  label="this input requires some text" required auto-validate error-message="needs some text!"></paper-input>-->
             <h3>Use Dom-bind</h3>
             <template is="dom-bind">
-               <gl-form-dropdownMenu label="Dinosaurs" required>
+               <gl-form-dropdown-menu label="Dinosaurs" required>
                    <paper-listbox class="dropdown-content">
                         <paper-item rice-type="allosaurus">allosaurus</paper-item>
                         <paper-item rice-type="brontosaurus">brontosaurus</paper-item>
                         <paper-item rice-type="carcharodontosaurus">carcharodontosaurus</paper-item>
                         <paper-item rice-type="diplodocus">diplodocus</paper-item>
                     </paper-listbox>
-               </gl-form-dropdownMenu>
+               </gl-form-dropdown-menu>
             </template>
 
             <h3>Use Dom-repeat</h3>
             <template is="dom-repeat" items="{{myData}}">
-                 <gl-form-dropdownMenu label="Dinosaurs" required>
+                 <gl-form-dropdown-menu label="Dinosaurs" required>
                    <paper-listbox class="dropdown-content" attr-for-selected="rice-type">
                         <paper-item rice-type="allosaurus">allosaurus</paper-item>
                         <paper-item rice-type="brontosaurus">brontosaurus</paper-item>
                         <paper-item rice-type="carcharodontosaurus">carcharodontosaurus</paper-item>
                         <paper-item rice-type="diplodocus">diplodocus</paper-item>
                     </paper-listbox>
-               </gl-form-dropdownMenu>
+               </gl-form-dropdown-menu>
             </template>
 
             <h3>Complete Module</h3>
