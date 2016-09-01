@@ -188,9 +188,6 @@
                     e.setAttribute('aria-expanded', openState);
                 }
             },
-            ready:function(){
-                console.log('ready');
-            },
             DropdownMenuOnBlur : function(e){
                 console.log(e.target.value);
                 if((e.target.is)=="paper-dropdown-menu"){
@@ -210,7 +207,7 @@
                 }
             },
             DropdownMenuOnFocus : function(e){
-                console.log('DropDownMenufocus');
+                // console.log('DropDownMenufocus');
                 this.customStyle['--paper-input-container-color'] =  "#737373";
                 this.updateStyles();
             }

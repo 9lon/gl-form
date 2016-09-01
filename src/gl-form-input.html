@@ -77,13 +77,13 @@
             InputOnBlur : function(e){
             console.log(e.target.validate());
                 if(e.target.validate()){
-                    console.log('Sucess!!');
+                    // console.log('Sucess!!');
                     this.customStyle['--paper-input-container-color'] =  "green";
                 }
                 this.updateStyles();
             },
             InputOnFocus : function(e){
-                console.log('focus');
+                // console.log('focus');
                 this.customStyle['--paper-input-container-color'] =  "#737373";
                 this.updateStyles();
             }

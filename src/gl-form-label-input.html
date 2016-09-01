@@ -2,7 +2,7 @@
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 
 <dom-module id="gl-form-label-input">
-    <style is="custom-style">
+    <style>
         paper-material{
             padding: 15px;
         }
@@ -12,13 +12,21 @@
           }
           --paper-input-container-underline:{
               display: none;
-          } 
+          }
+          --paper-input-container-label:{
+            font-size: var(--gl-fontsize-label); 
+          }
        }
+        .font{
+            font-size:var(--gl-fontsize-label);
+          }  
     </style>
     
      <template>
-
-        <paper-input label="{{label}}" value="{{value}}" disabled></paper-input>
+         <div class="font">
+             asdasdasd
+         </div>
+        <paper-input class="font" label="{{label}}" value="{{value}}" disabled></paper-input>
 
      </template>
  
@@ -37,14 +45,16 @@
             },
             fontSizeLabel:{
                 type:String,
-                value:'red'
+                value:'36px'
             },
         },
         ready:function(){
-            console.log('test');
-            console.log('fontsize:',this.fontSizeLabel);
+            // console.log('test');
+            // console.log('fontsize:',this.fontSizeLabel);
             this.customStyle['--gl-fontsize-label'] = this.fontSizeLabel;
-            // this.customStyle['--el-color-bglabel'] = this.colorBglabel;
+            // console.log('customStyle',this.customStyle['--gl-fontsize-label']);
+            this.updateStyles();
+            this.customStyle['--el-color-bglabel'] = this.colorBglabel;
         }
     });
       
