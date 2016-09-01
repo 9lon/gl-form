@@ -2,7 +2,7 @@
 <link rel="import" href="../paper-input/paper-textarea.html">
 
 <dom-module id="gl-form-label">
-    <style>
+    <style is="custom-style">
         paper-material{
             padding: 15px;
         }
@@ -10,9 +10,9 @@
           --paper-input-container-disabled:{
               opacity: 1;
           }
-         --paper-input-container-label:{
-              font-size: var(--gl-fontsize-label);
-          }     
+          --paper-input-container-underline:{
+              display: none;
+          } 
        }
     </style>
     
@@ -37,14 +37,13 @@
             },
             fontSizeLabel:{
                 type:String,
-                value:'35px'
+                value:'red'
             },
         },
         ready:function(){
             console.log('test');
             console.log('fontsize:',this.fontSizeLabel);
             this.customStyle['--gl-fontsize-label'] = this.fontSizeLabel;
-            this.updateStyles();
             // this.customStyle['--el-color-bglabel'] = this.colorBglabel;
         }
     });
