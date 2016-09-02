@@ -1,0 +1,32 @@
+
+<link rel="import" href="../polymer/polymer.html">
+
+
+<dom-module id="gl-form-panel-body">
+    <style>
+        .container{
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-bottom: 1px solid dimgray;
+        }
+        .content{
+             font-size: 30px;
+        }
+    </style>
+    <template>
+        <div class="container">
+            <div class="content">
+                Body Content 
+            </div>
+             <content></content>
+        </div>
+       
+    </template>
+    <script>
+        Polymer({
+            is: 'gl-form-panel-body'
+        });
+    </script>
+</dom-module>
