@@ -11,14 +11,14 @@
 <link rel="import" href="../bower_components/paper-styles/default-theme.html">
 
 <link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu-icons.html">
-<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu-shared-styles.html">bower_components/
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu-shared-styles.html">
 
 
 <dom-module id="gl-form-dropdown-menu">
 
     <template>
     <style include="paper-dropdown-menu-shared-styles">
-        /*paper-input{
+        paper-input{
           --paper-input-container-label:{
               font-size:var(--gl-fontsize-label);
               font-size: 22px;
@@ -29,7 +29,7 @@
               font-family: 'rsuregular';
               font-size: 18px;
           }
-        }*/
+        }
     </style>
 
     <span role="button"></span>
@@ -212,7 +212,7 @@
                         console.log('sucess!!');
                         this.customStyle['--paper-input-container-color'] =  "green";
                     }
-                    else {
+                    else{
                         console.log('failed');
                         this.customStyle['--paper-input-container-color'] =  "red";
                     }
