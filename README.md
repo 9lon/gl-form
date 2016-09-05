@@ -15,5 +15,5 @@ Latest ✔ | Latest ✔ | Latest ✔ |
 Using bower:
 
 ```bash
-$ bower install glon-gl-form
+$ bower install glon/gl-form
 ```
