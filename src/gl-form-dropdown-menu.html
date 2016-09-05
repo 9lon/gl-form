@@ -17,7 +17,20 @@
 <dom-module id="gl-form-dropdown-menu">
 
     <template>
-    <style include="paper-dropdown-menu-shared-styles"></style>
+    <style include="paper-dropdown-menu-shared-styles">
+        /*paper-input{
+          --paper-input-container-label:{
+              font-size:var(--gl-fontsize-label);
+              font-size: 22px;
+              font-family: 'rsuregular';
+              font-weight: bold;
+          }
+          --paper-input-container-input:{
+              font-family: 'rsuregular';
+              font-size: 18px;
+          }
+        }*/
+    </style>
 
     <span role="button"></span>
     <paper-menu-button
@@ -47,8 +60,8 @@
           always-float-label="[[alwaysFloatLabel]]"
           no-label-float="[[noLabelFloat]]"
           label="[[label]]"
-            on-blur="DropdownMenuOnBlur"
-           on-focus="DropdownMenuOnFocus">
+          on-blur="DropdownMenuOnBlur"
+          on-focus="DropdownMenuOnFocus">
           <iron-icon icon="paper-dropdown-menu:arrow-drop-down" suffix></iron-icon>
         </paper-input>
       </div>

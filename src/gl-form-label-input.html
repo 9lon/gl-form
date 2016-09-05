@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
-
+<!--<link rel="stylesheet" href="../font/rsu/stylesheet.css">-->
 <dom-module id="gl-form-label-input">
     <style>
         paper-material{
@@ -13,21 +13,24 @@
           --paper-input-container-underline:{
               display: none;
           }
-          --paper-input-container-label:{
-            font-size: var(--gl-fontsize-label); 
+          /*--paper-input-container-label:{
+              font-size:var(--gl-fontsize-label);
+              font-size: 22px;
+              font-family: 'rsuregular';
+              font-weight: bold;
           }
+          --paper-input-container-input:{
+              font-family: 'rsuregular';
+              font-size: 18px;
+          }*/
        }
-        .font{
-            font-size:var(--gl-fontsize-label);
-          }  
     </style>
     
      <template>
          <div class="font">
-             asdasdasd
+             <paper-input class="font" label="{{label}}" value="{{value}}" disabled></paper-input>
          </div>
-        <paper-input class="font" label="{{label}}" value="{{value}}" disabled></paper-input>
-
+        
      </template>
  
   <script>
@@ -45,16 +48,13 @@
             },
             fontSizeLabel:{
                 type:String,
-                value:'36px'
+                value:'18px'
             },
         },
         ready:function(){
-            // console.log('test');
-            // console.log('fontsize:',this.fontSizeLabel);
             this.customStyle['--gl-fontsize-label'] = this.fontSizeLabel;
-            // console.log('customStyle',this.customStyle['--gl-fontsize-label']);
-            this.updateStyles();
-            this.customStyle['--el-color-bglabel'] = this.colorBglabel;
+            console.log(this.customStyle['--gl-fontsize-label']);
+            // this.customStyle['--el-color-bglabel'] = this.colorBglabel;
         }
     });
       

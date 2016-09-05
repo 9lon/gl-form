@@ -13,23 +13,40 @@
     <link rel="import" href="src/gl-form.html">
     
     <link rel="import" href="./bower_components/paper-button/paper-button.html">
-    
-    
-    
+    <!--<link rel="stylesheet" href="font/rsu/stylesheet.css">
+    <style>
+        gl-form-panel{
+            font-family: 'rsuregular';
+        }
+    </style>-->
 </head>
 <body>
+
     <gl-form-panel>
-        <gl-form-panel-head label="Title">
-           <paper-button raised>ClickMe</paper-button>
+        <gl-form-panel-head label="Header">
+            <paper-button raised>Save</paper-button>
+            <paper-button raised>Edit</paper-button>
+            <paper-button raised>Delete</paper-button>
         </gl-form-panel-head>
-        <gl-form-panel-body>
-            <paper-input label="Text"></paper-input>
-            <paper-button raised>Login</paper-button>
+        <gl-form-panel-body label="Body">
+            <gl-form-label-input label="ทดสอบการแสดงตัวอักษร" value="ผลการทดสอบ"></gl-form-label-input>
+            <gl-form-label-textarea label="ทดสอบการแสดงตัวอักษร" value="ผลการทดสอบ"></gl-form-label-textarea>
+            <gl-form-input label="ทดสอบการแสดงตัวอักษร" value="ผลการทดสอบ" required></gl-form-input>
+            <gl-form-textarea label="ทดสอบ" value="ผลการทดสอบ"></gl-form-textarea>
+            <gl-form-dropdown-menu label="ทดสอบ" required>
+                <paper-listbox class="dropdown-content">
+                    <paper-item rice-type="allosaurus">ตัวอักษร</paper-item>
+                    <paper-item rice-type="brontosaurus">ขนาด</paper-item>
+                    <paper-item rice-type="carcharodontosaurus">สี</paper-item>
+                    <paper-item rice-type="diplodocus">ความถูกต้อง</paper-item>
+                </paper-listbox>
+            </gl-form-dropdown-menu>
         </gl-form-panel-body>
-        <gl-form-panel-footer>
+        <gl-form-panel-footer label="Footer">
             <paper-button raised>ClickMe</paper-button>
         </gl-form-panel-footer>
     </gl-form-panel>
+
 
 </body>
 </html>

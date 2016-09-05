@@ -13,6 +13,16 @@
           --paper-input-container-underline:{
               display: none;
           } 
+          /*--paper-input-container-label:{
+              font-size:var(--gl-fontsize-label);
+              font-size: 22px;
+              font-family: 'rsuregular';
+              font-weight: bold;
+          }
+          --paper-input-container-input:{
+              font-family: 'rsuregular';
+              font-size: 18px;
+          }*/
        }
     </style>
     
@@ -41,10 +51,7 @@
             },
         },
         ready:function(){
-            // console.log('test');
-            // console.log('fontsize:',this.fontSizeLabel);
             this.customStyle['--gl-fontsize-label'] = this.fontSizeLabel;
-            // this.customStyle['--el-color-bglabel'] = this.colorBglabel;
         }
     });
       

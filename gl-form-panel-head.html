@@ -18,14 +18,19 @@
             color:red;
         }
         .editFont{
-          font-size: 30px;
+          font-size: var(--gl-font-size);
         }
     </style>
     <template>
         <div class="container">
             <div class="horizontal justified layout">
-                <div class="editFont">
-                    {{label}}
+                <div>
+                    <div class="editFont">
+                        {{label}} 
+                    </div>
+                    <div>
+                        {{labelContent}}
+                    </div> 
                 </div>
                 <div>
                      <content></content>
@@ -38,8 +43,10 @@
             is: 'gl-form-panel-head',
             properties:{
                 label:{
-                    type:String,
-                    value:'gl-form-panel'
+                    type:String
+                },
+                labelContent:{
+                    type:String
                 },
                 editStyle:{
                     type:String,
@@ -48,9 +55,14 @@
                 setPosition:{
                     type:String,
                     value:'horizontal'
+                },
+                fontSize:{
+                    type:String,
+                    value:'30px'
                 }
             },
             ready:function(){
+                this.customStyle['--gl-font-size'] = this.fontSize;
                 console.log(this.setPosition);
                 // this.customStyle['--gl-position'] = this.setPosition;
             }

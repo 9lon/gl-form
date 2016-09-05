@@ -11,15 +11,20 @@
             padding-left: 20px;
             padding-right: 20px;
         }
-        .editFont{
-            font-size: 30px;
+        .fontSize{
+            font-size: var(--gl-font-size);
         }
     </style>
     <template>
         <div class="container">
             <div class="horizontal justified layout">
-                <div class="editFont">
-                    Footer
+                <div>
+                    <div class="fontSize">
+                        {{label}}
+                    </div>
+                    <div>
+                        {{labelContent}}
+                    </div>
                 </div>
                 <div>
                     <content></content>
@@ -30,7 +35,22 @@
     </template>
     <script>
         Polymer({
-            is: 'gl-form-panel-footer'
+            is: 'gl-form-panel-footer',
+            properties:{
+                label:{
+                    type: String
+                },
+                labelContent:{
+                    type: String
+                },
+                fontSize:{
+                    type: String,
+                    value: '30px'
+                }
+            },
+            ready:function(){
+                this.customStyle['--gl-font-size'] = this.fontSize;
+            }
         });
     </script>
 </dom-module>
