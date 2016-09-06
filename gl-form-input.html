@@ -7,9 +7,39 @@
 <link rel="import" href="../paper-input/paper-input-char-counter.html">
 <link rel="import" href="../paper-input/paper-input-container.html">
 
+<!--<link rel="import" href="../gl-font/gl-rsu-font.html">-->
+<!--include="gl-rsu-font"-->
 <dom-module id="gl-form-input">
-    <style>
+    <style> 
+      :host {
+        display: block;
+      }
+
+      :host([focused]) {
+        outline: none;
+      }
+
+      :host([hidden]) {
+        display: none !important;
+      }
+
+      input::-webkit-input-placeholder {
+        color: var(--paper-input-container-color, --secondary-text-color);
+      }
+
+      input:-moz-placeholder {
+        color: var(--paper-input-container-color, --secondary-text-color);
+      }
+
+      input::-moz-placeholder {
+        color: var(--paper-input-container-color, --secondary-text-color);
+      }
+
+      input:-ms-input-placeholder {
+        color: var(--paper-input-container-color, --secondary-text-color);
+      } 
       label{
+        pointer-events: none;  
         font-family: 'rsuregular' !important;
         font-weight: bold !important;
         font-size: 22px !important;

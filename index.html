@@ -11,12 +11,20 @@
         };
     </script>
     <link rel="import" href="src/gl-form.html">
-    
     <link rel="import" href="./bower_components/paper-button/paper-button.html">
-    <link rel="stylesheet" href="font/rsu/stylesheet.css">
+    <link rel="import" href="./bower_components/gl-font/gl-rsu-font.html">
+    <!--<link rel="stylesheet" href="font/rsu/stylesheet.css">-->
+
+    <style>
+        .t1{
+            width: 300px;
+        }
+        .t2{
+            width: 250px;
+        }
+    </style>
 </head>
 <body>
-
     <gl-form-panel>
         <gl-form-panel-head label="Header">
             <paper-button raised>Save</paper-button>
@@ -26,9 +34,9 @@
         <gl-form-panel-body label="Body">
             <gl-form-label-input label="ทดสอบการแสดงตัวอักษร (Input)" value="ผลการทดสอบ"></gl-form-label-input>
             <gl-form-label-textarea label="ทดสอบการแสดงตัวอักษร (Textarea)" value="ผลการทดสอบ"></gl-form-label-textarea>
-            <gl-form-input label="ทดสอบการแสดงตัวอักษร (Input)" value="ผลการทดสอบ" required></gl-form-input>
-            <gl-form-textarea label="ทดสอบ (Textarea)" value="ผลการทดสอบ"></gl-form-textarea>
-            <gl-form-dropdown-menu label="ทดสอบ (dropdown menu)" required>
+            <gl-form-input class="t1" label="ทดสอบการแสดงตัวอักษร (Input)" value="ผลการทดสอบ" required></gl-form-input>
+            <gl-form-textarea class="t1" label="ทดสอบ (Textarea)" value="ผลการทดสอบ"></gl-form-textarea>
+            <gl-form-dropdown-menu class="t2" label="ทดสอบ (dropdown menu)" required>
                 <paper-listbox class="dropdown-content">
                     <paper-item rice-type="allosaurus">ตัวอักษร</paper-item>
                     <paper-item rice-type="brontosaurus">ขนาด</paper-item>
@@ -41,7 +49,5 @@
             <paper-button raised>ClickMe</paper-button>
         </gl-form-panel-footer>
     </gl-form-panel>
-
-
 </body>
 </html>

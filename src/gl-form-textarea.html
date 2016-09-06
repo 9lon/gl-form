@@ -10,7 +10,14 @@
 
 <dom-module id="gl-form-textarea">
    <style>
+      :host {
+        display: block;
+      }
+      :host([hidden]) {
+        display: none !important;
+      }
       label{
+        pointer-events: none;  
         font-family: 'rsuregular' !important;
         font-weight: bold !important;
         font-size: 22px !important;
