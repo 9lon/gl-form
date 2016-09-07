@@ -29,7 +29,9 @@
           paper-material{
              /*@apply(--paper-font-headline);*/
           }
-
+          paper-material{
+              margin: var(--el-margin-material);
+          }
       </style>
       <paper-material elevation="1">
          <content></content>
@@ -50,11 +52,16 @@
                 colorBglabel:{
                     type:String,
                     value:'#FFF'
+                },
+                setMargin:{
+                    type:String,
+                    value:'15px'
                 }
             },
             ready:function(){
                  this.customStyle['--el-color-label'] = this.colorLabel;
                  this.customStyle['--el-color-bglabel'] = this.colorBglabel;
+                 this.customStyle['--el-margin-material'] = this.setMargin;
             }
         });
     </script>
