@@ -21,10 +21,11 @@
               color: var(--el-color-label);
         }
           .content{
-              padding-top: 20px;
+              /*padding-top: 20px;
               padding-bottom: 20px;
               padding-left: 20px;
-              padding-right: 20px;
+              padding-right: 20px;*/
+              padding: var(--gl-form-padding);
           }
           paper-material{
               margin: var(--el-margin-material);
@@ -58,12 +59,17 @@
                 setMargin:{
                     type:String,
                     value:'15px'
+                },
+                setPadding:{
+                    type: String,
+                    value:'10px'
                 }
             },
             ready:function(){
                  this.customStyle['--el-color-label'] = this.colorLabel;
                  this.customStyle['--el-color-bglabel'] = this.colorBglabel;
                  this.customStyle['--el-margin-material'] = this.setMargin;
+                 this.customStyle['--gl-form-padding'] = this.setPadding;
             }
         });
     </script>
