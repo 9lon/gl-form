@@ -31,9 +31,10 @@
           }
           paper-material{
               margin: var(--el-margin-material);
+              border: 1px solid #b3b3b3;
           }
       </style>
-      <paper-material elevation="1">
+      <paper-material class="content" elevation="{{setElevation}}">
          <content></content>
       </paper-material>
    </template>
@@ -41,6 +42,10 @@
         Polymer({
             is:'gl-form-panel',
             properties:{
+                setElevation:{
+                    type:String,
+                    value:'0'
+                },
                 label:{
                     type:String,
                     value:'gl-form-panel'

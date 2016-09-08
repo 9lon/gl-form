@@ -2,11 +2,11 @@ var gulp = require('gulp');
 var replace = require('gulp-replace');
 
 gulp.task('htmlReplace',function(){
-     
+
      gulp.src('src/*')
     .pipe(replace('../bower_components/','../'))
     .pipe(gulp.dest(''));
-     
+
     //  gulp.src('src/gl-form-label-textarea.html')
     // .pipe(replace('../bower_components/','../'))
     // .pipe(gulp.dest(''));
@@ -26,7 +26,7 @@ gulp.task('htmlReplace',function(){
     //  gulp.src('src/gl-form-panel.html')
     // .pipe(replace('../bower_components/','../'))
     // .pipe(gulp.dest(''));
-    
+
 });
 
 gulp.task('watch',function(){
