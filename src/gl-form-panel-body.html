@@ -5,11 +5,12 @@
 <dom-module id="gl-form-panel-body">
     <style>
         .container{
-            padding-top: 20px;
+            /*padding-top: 20px;
             padding-bottom: 20px;
             padding-left: 20px;
-            padding-right: 20px;
-            border-bottom: 1px solid #b3b3b3;
+            padding-right: 20px;*/
+            padding: var(--gl-form-padding);
+            border-bottom: var(--gl-set-border) solid #b3b3b3;
         }
         .fontEdit{
             font-size: var(--gl-font-size);
@@ -42,10 +43,20 @@
                 fontSize:{
                     type:String,
                     value:"30px"
+                },
+                setPadding:{
+                    type:String,
+                    value:"20px"
+                },
+                setBorder:{
+                    type:String,
+                    value:"1px"
                 }
             },
             ready:function(){
                 this.customStyle['--gl-font-size'] = this.fontSize;
+                this.customStyle['--gl-form-padding'] = this.setPadding;
+                this.customStyle['--gl-set-border'] = this.setBorder;
             }
         });
     </script>

@@ -25,10 +25,10 @@
               font-family: 'rsuregular';
               font-weight: bold;
           }
-          --paper-input-container-input:{
-              /*font-family: 'rsuregular';
-              font-size: 18px;*/
-          }
+          /*--paper-input-container-input:{
+              font-family: 'rsuregular';
+              font-size: 18px;
+          }*/
         }
     </style>
 
@@ -202,22 +202,13 @@
                 }
             },
             DropdownMenuOnBlur : function(e){
-                console.log(e.target.value);
-                if((e.target.is)=="paper-dropdown-menu"){
-                    //console.log(e.target.validate());
-                }  
-                else {
-                   // console.log(e.target.parentNode.validate());
-                    if(e.target.value){
-                        console.log('sucess!!');
-                        this.customStyle['--paper-input-container-color'] =  "green";
-                    }
-                    else{
-                        console.log('failed');
-                        this.customStyle['--paper-input-container-color'] =  "red";
-                    }
-                     this.updateStyles();
+                if(e.target.value){
+                    this.customStyle['--paper-input-container-color'] =  "green";
                 }
+                else{
+                    this.customStyle['--paper-input-container-color'] =  "red";
+                }
+                this.updateStyles();
             },
             DropdownMenuOnFocus : function(e){
                 // console.log('DropDownMenufocus');

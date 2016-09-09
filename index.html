@@ -23,21 +23,24 @@
         .t2{
             width: 250px;
         }
+        .card{
+         margin: 20px;
+        }
     </style>
 </head>
 <body>
-    <gl-form-panel class="color" set-margin="30px" set-padding="10px 20px 10px 20px">
-        <gl-form-panel-head label="Header">
+    <gl-form-panel class="card" set-padding="10px 20px 10px 20px" set-border="1px">
+        <gl-form-panel-head label="Header" set-padding="10px" set-border="1px">
             <paper-button raised>Save</paper-button>
             <paper-button raised>Edit</paper-button>
             <paper-button raised>Delete</paper-button>
         </gl-form-panel-head>
-        <gl-form-panel-body label="Body">
+        <gl-form-panel-body label="Body" set-padding="10px" set-border="1px">
             <gl-form-label-input label="ทดสอบการแสดงตัวอักษร (Input)" value="ผลการทดสอบ"></gl-form-label-input>
             <gl-form-label-textarea label="ทดสอบการแสดงตัวอักษร (Textarea)" value="ผลการทดสอบ"></gl-form-label-textarea>
             <gl-form-input class="t1" label="ทดสอบการแสดงตัวอักษร (Input)" placeholder="กรอกข้อความ" required></gl-form-input>
             <gl-form-textarea class="t1" label="ทดสอบ (Textarea)" value="ผลการทดสอบ"></gl-form-textarea>
-            <gl-form-dropdown-menu class="t2" label="ทดสอบ (dropdown menu)" required>
+            <gl-form-dropdown-menu class="t2" label="ทดสอบ (dropdown menu)" auto-validate required>
                 <paper-listbox class="dropdown-content">
                     <paper-item rice-type="allosaurus">ตัวอักษร</paper-item>
                     <paper-item rice-type="brontosaurus">ขนาด</paper-item>
@@ -46,9 +49,11 @@
                 </paper-listbox>
             </gl-form-dropdown-menu>
         </gl-form-panel-body>
-        <gl-form-panel-footer label="Footer">
+        <gl-form-panel-footer label="Footer" set-padding="10px">
             <paper-button raised>ClickMe</paper-button>
         </gl-form-panel-footer>
     </gl-form-panel>
+
+    
 </body>
 </html>

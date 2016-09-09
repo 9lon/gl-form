@@ -6,10 +6,7 @@
 <dom-module id="gl-form-panel-footer">
     <style is="custom-style" include="iron-flex iron-flex-factors iron-flex-alignment">
         .container{
-            padding-top: 20px;
-            padding-bottom: 20px;
-            padding-left: 20px;
-            padding-right: 20px;
+            padding: var(--gl-set-padding);
         }
         .fontSize{
             font-size: var(--gl-font-size);
@@ -48,10 +45,15 @@
                 fontSize:{
                     type: String,
                     value: '30px'
+                },
+                setPadding:{
+                    type: String,
+                    value: '20px'
                 }
             },
             ready:function(){
                 this.customStyle['--gl-font-size'] = this.fontSize;
+                this.customStyle['--gl-set-padding'] = this.setPadding;
             }
         });
     </script>
