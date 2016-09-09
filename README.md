@@ -13,17 +13,24 @@ Using bower:
 $ bower install glon/gl-form
 ```
 ## Components
-
+![gl-form](http://i.imgur.com/XufPgWM.png)
 - gl-form-input
 ```bash
 <gl-form-input></gl-form-input>
-<gl-form-input label="label name"></gl-form-input>
 ```
 - gl-form-textarea 
+```bash
+<gl-form-textarea></gl-form-textarea>
+```
 - gl-form-dropdown-menu
+```bash
+<gl-form-dropdown-menu></gl-form-dropdown-menu>
+```
 - gl-form-label-input
+```bash
+<gl-form-label-input></gl-form-label-input>
+```
 - gl-form-label-textarea
-- gl-form-panel
-- gl-form-panel-head
-- gl-form-panel-body
-- gl-form-panel-footer
+```bash
+<gl-form-label-textarea></gl-form-label-textarea>
+```
