@@ -13,7 +13,7 @@ Using bower:
 $ bower install glon/gl-form
 ```
 ## Components
-![gl-form](https://i.imgur.com/OvGfoAg.png)
+
 - gl-form-input
 ```bash
 <gl-form-input></gl-form-input>
