@@ -48,26 +48,13 @@ $ bower install glon/gl-form
 ```bash
   <gl-form-panel set-padding="10px 20px 10px 20px" set-border="1px">
         <gl-form-panel-head label="Header" set-padding="10px" set-border="1px">
-            <paper-button raised>Save</paper-button>
-            <paper-button raised>Edit</paper-button>
-            <paper-button raised>Delete</paper-button>
+            <!--content-->
         </gl-form-panel-head>
         <gl-form-panel-body label="Body" set-padding="10px" set-border="1px">
-            <gl-form-label-input label="ทดสอบการแสดงตัวอักษร (Input)" value="ผลการทดสอบ"></gl-form-label-input>
-            <gl-form-label-textarea label="ทดสอบการแสดงตัวอักษร (Textarea)" value="ผลการทดสอบ"></gl-form-label-textarea>
-            <gl-form-input class="t1" label="ทดสอบการแสดงตัวอักษร (Input)" placeholder="กรอกข้อความ" required></gl-form-input>
-            <gl-form-textarea class="t1" label="ทดสอบ (Textarea)" value="ผลการทดสอบ"></gl-form-textarea>
-            <gl-form-dropdown-menu label="ทดสอบ (dropdown menu)" auto-validate required>
-                <paper-listbox class="dropdown-content">
-                    <paper-item value="ตัวอักษร">ตัวอักษร</paper-item>
-                    <paper-item value="ขนาด">ขนาด</paper-item>
-                    <paper-item value="สี">สี</paper-item>
-                    <paper-item value="ความถูกต้อง">ความถูกต้อง</paper-item>
-                </paper-listbox>
-            </gl-form-dropdown-menu>
+            <!--content-->
         </gl-form-panel-body>
         <gl-form-panel-footer label="Footer" set-padding="10px">
-            <paper-button raised>ClickMe</paper-button>
+           <!--content-->
         </gl-form-panel-footer>
     </gl-form-panel>
 ```
