@@ -12,6 +12,19 @@ Using bower:
 ```bash
 $ bower install glon/gl-form
 ```
+#Getting started
+```bash
+<link rel="import" href="bower_components/gl-form/gl-form.html">
+```
+##or
+```bash
+<link rel="import" href="bower_components/gl-form/gl-form-dropdown-menu.html">
+<link rel="import" href="bower_components/gl-form/gl-form-input.html">
+<link rel="import" href="bower_components/gl-form/gl-form-textarea.html">
+<link rel="import" href="bower_components/gl-form/gl-form-label-input.html">
+<link rel="import" href="bower_components/gl-form/gl-form-label-textarea.html">
+<link rel="import" href="bower_components/gl-form/gl-form-panel.html">
+```
 #gl-form-label-input , gl-form-label-textarea
 ![gl-form-label](http://i.imgur.com/z85U3Fn.png)
 - label การกำหนดชื่อให้กับ Input นั้น เช่น กรอก Username Name เป็นต้น
