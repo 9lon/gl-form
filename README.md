@@ -57,7 +57,7 @@ $ bower install glon/gl-form
 </gl-form-dropdown-menu>
 ```
 #gl-form-panel
-![gl-form-panel] (http://i.imgur.com/imPc8ei.png)
+![gl-form-panel] (http://i.imgur.com/7Mi41Pi.png)
 ```bash
   <gl-form-panel set-padding="10px 20px 10px 20px" set-border="1px">
         <gl-form-panel-head label="Header" set-padding="10px" set-border="1px">
