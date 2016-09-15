@@ -7,6 +7,7 @@
 <link rel="import" href="../paper-listbox/paper-listbox.html">
 <link rel="import" href="../paper-item/paper-item.html">
 
+
 <link rel="import" href="gl-form-input.html">
 <link rel="import" href="gl-form-textarea.html">
 <link rel="import" href="gl-form-dropdown-menu.html">
@@ -26,15 +27,21 @@
     <template>
         <gl-form-panel>
             <div>
-                <h4>gl-form-label</h4>
+                <h4>gl-form-label-input</h4>
                 <div>
-                    <gl-form-label-input label="Username : " value="TestUsername"></gl-form-label-input>
+                    <gl-form-label-input label="label : " value="value"></gl-form-label-input>
+                </div>
+            </div>
+            <div>
+                <h4>gl-form-label-textarea</h4>
+                <div>
+                    <gl-form-label-textarea label="Username : " value="TestUsername"></gl-form-label-textarea>
                 </div>
             </div>
              <div>
-                <h4>gl-form-label</h4>
+                <h4>gl-form-input</h4>
                 <div>
-                    <gl-form-input  label="this input requires some text" required auto-validate error-message="needs some text!"></gl-form-input>
+                    <gl-form-input  label="label input" required auto-validate error-message="needs some text!"></gl-form-input>
                 </div>
             </div>
              <div>
@@ -103,6 +110,9 @@
                         data:'data : 3',
                     }
                 ]
+            },
+            focus:function(){
+                // console.log('...');
             }
         });   
     </script>

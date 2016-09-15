@@ -13,8 +13,6 @@
     <link rel="import" href="src/gl-form.html">
     <link rel="import" href="./bower_components/paper-button/paper-button.html">
     <link rel="import" href="./bower_components/gl-font/gl-rsu-font.html">
-    <link rel="import" href="./bower_components/gl-style/gl-color.html">
-    <!--<link rel="stylesheet" href="font/rsu/stylesheet.css">-->
     <link rel="import" href="./bower_components/paper-material/paper-material.html">
     <style>
         .t1{
@@ -24,7 +22,9 @@
             width: 250px;
         }
         .card{
-         margin: 20px;
+            margin: 20px;
+            width: 60%;
+            height: 10%;
         }
     </style>
 </head>
@@ -40,12 +40,12 @@
             <gl-form-label-textarea label="ทดสอบการแสดงตัวอักษร (Textarea)" value="ผลการทดสอบ"></gl-form-label-textarea>
             <gl-form-input class="t1" label="ทดสอบการแสดงตัวอักษร (Input)" placeholder="กรอกข้อความ" required></gl-form-input>
             <gl-form-textarea class="t1" label="ทดสอบ (Textarea)" value="ผลการทดสอบ"></gl-form-textarea>
-            <gl-form-dropdown-menu class="t2" label="ทดสอบ (dropdown menu)" auto-validate required>
-                <paper-listbox class="dropdown-content">
-                    <paper-item rice-type="allosaurus">ตัวอักษร</paper-item>
-                    <paper-item rice-type="brontosaurus">ขนาด</paper-item>
-                    <paper-item rice-type="carcharodontosaurus">สี</paper-item>
-                    <paper-item rice-type="diplodocus">ความถูกต้อง</paper-item>
+            <gl-form-dropdown-menu label="ทดสอบ (dropdown menu)" auto-validate required disabled>
+                <paper-listbox class="dropdown-content" selected="0">
+                    <paper-item value="ตัวอักษร">ตัวอักษร</paper-item>
+                    <paper-item value="ขนาด">ขนาด</paper-item>
+                    <paper-item value="สี">สี</paper-item>
+                    <paper-item value="ความถูกต้อง">ความถูกต้อง</paper-item>
                 </paper-listbox>
             </gl-form-dropdown-menu>
         </gl-form-panel-body>
@@ -53,6 +53,8 @@
             <paper-button raised>ClickMe</paper-button>
         </gl-form-panel-footer>
     </gl-form-panel>
+
+    <!--<gl-form></gl-form>-->
 
     
 </body>
