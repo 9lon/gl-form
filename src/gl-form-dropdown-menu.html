@@ -32,12 +32,15 @@
               display: none;
           }
           --paper-menu-button-disabled:{
-              color: white;
+              display: none;
           }
           /*--paper-input-container-input:{
               font-family: 'rsuregular';
               font-size: 18px;
           }*/
+        }
+        iron-icon{
+            display: var(--gl-dropdownmenu-disabled);
         }
     </style>
 
@@ -141,6 +144,9 @@
                 verticalAlign: {
                     type: String,
                     value: 'top'
+                },
+                disabled: {
+                    observer: 'disabledDropDown'
                 }
             },
             listeners: {
@@ -209,6 +215,11 @@
                 if (e) {
                     e.setAttribute('aria-expanded', openState);
                 }
+            },
+            disabledDropDown : function(e){
+                if(e == true)
+                   this.customStyle['--gl-dropdownmenu-disabled'] = "none";
+                else this.customStyle['--gl-dropdownmenu-disabled'] = "on";
             },
             DropdownMenuOnBlur : function(e){
                 if(e.target.value){

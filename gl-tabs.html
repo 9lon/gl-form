@@ -1,0 +1,51 @@
+<link rel="import" href="./../polymer/polymer.html">
+<link rel="import" href="./../paper-tabs/paper-tabs.html">
+<link rel="import" href="./../iron-pages/iron-pages.html">
+
+<dom-module id="gl-tabs">
+    <template>
+        <styles>
+            <style is="custom-style">
+                #container {
+                    max-width: 600px;
+                }
+                paper-tabs, paper-toolbar {
+                    background-color: var(--paper-blue-900);
+                    color: #fff;
+                }
+                .color1{
+                    color:red;
+                }
+            </style>
+        </styles>
+
+        <paper-tabs selected="{{selected}}">
+            <template is="dom-repeat" items="{{getData}}">   
+                <paper-tab>{{item.data}}</paper-tab>
+            </template>
+        </paper-tabs>
+
+        <iron-pages selected="{{selected}}">
+            <template is="dom-repeat" items="{{getData}}">   
+                <div>
+                    <content select = "section-content[name={{item.data}}]"></content>
+                </div>
+            </template>
+        </iron-pages>
+      
+    </template>
+    <script>
+        Polymer({
+            is: 'gl-tabs',
+            properties:{
+              getData:{
+                  type: Array
+              }
+            },
+            ready:function(){
+                this.selected = 0;
+            }
+          
+        });
+    </script>
+</dom-module>

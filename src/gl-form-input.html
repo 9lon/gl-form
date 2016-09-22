@@ -6,6 +6,7 @@
 <link rel="import" href="../bower_components/paper-input/paper-input-behavior.html">
 <link rel="import" href="../bower_components/paper-input/paper-input-char-counter.html">
 <link rel="import" href="../bower_components/paper-input/paper-input-container.html">
+<link rel="import" href="./../bower_components/numeral-js/numeral-js.html">
 
 <!--<link rel="import" href="../bower_components/gl-font/gl-rsu-font.html">-->
 <!--include="gl-rsu-font"-->
@@ -48,10 +49,20 @@
         /*font-family: 'rsuregular' !important;
         font-size: 18px !important;*/
       }
+      numeral-js{
+        position: absolute;
+        font-size: 14px;
+        top: 24px;
+        right: 0%;
+        padding-right: 20px;
+      }
+      .hide{
+        display : var(--paper-input-show-number);
+      }
     </style>
     <template>
    <paper-input-container no-label-float="[[noLabelFloat]]" always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel,placeholder)]]" auto-validate$="[[autoValidate]]" disabled$="[[disabled]]" invalid="[[invalid]]">
-       
+      
         <content select="[prefix]"></content>
 
         <label hidden$="[[!label]]" aria-hidden="true" for="input">[[label]]</label>
@@ -89,14 +100,22 @@
             autosave$="[[autosave]]"
             results$="[[results]]"
             accept$="[[accept]]"
-            multiple$="[[multiple]]" on-blur="InputOnBlur" on-focus="InputOnFocus">
+            multiple$="[[multiple]]" 
+            on-blur="InputOnBlur" 
+            on-focus="InputOnFocus"
+            on-keyUp="_formatNumber">
 
         <content select="[suffix]"></content>
-
+        
         <template is="dom-if" if="[[errorMessage]]">
             <paper-input-error aria-live="assertive">[[errorMessage]]</paper-input-error>
         </template>
-
+        
+        <div class="hide">
+           <numeral-js number="{{dataFormatNumber}}" format="0,0.00" print></numeral-js>
+        </div>
+         
+        
         <template is="dom-if" if="[[charCounter]]">
             <paper-input-char-counter></paper-input-char-counter>
         </template>
@@ -110,8 +129,26 @@
                 Polymer.IronFormElementBehavior,
                 Polymer.PaperInputBehavior
             ],
+            properties:{
+                dataFormatNumber:{
+                  type: String,
+                  value: ''
+                },
+                formatNumber:{
+                  type: String,
+                  value: 'off'
+                }
+            },
+            ready:function(){
+              if(this.formatNumber == 'on')
+                this.customStyle['--paper-input-show-number'] = "1";
+              else
+                this.customStyle['--paper-input-show-number'] = "none";
+            },
+            _formatNumber:function(e){
+              this.dataFormatNumber = e.target.value;
+            },
             InputOnBlur : function(e){
-            console.log(e.target.validate());
                 if(e.target.validate()){
                     // console.log('Sucess!!');
                     this.customStyle['--paper-input-container-color'] =  "green";

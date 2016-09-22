@@ -28,7 +28,7 @@
     
      <template>
          <div class="font">
-             <paper-input class="font" label="{{label}}" value="{{value}}" disabled></paper-input>
+             <paper-input class="font" label="{{label}}" value="{{data}}" disabled></paper-input>
          </div>
         
      </template>
@@ -50,8 +50,18 @@
                 type:String,
                 value:'18px'
             },
+             formatNumber:{
+                type:String,
+                value: 'off'
+            }
         },
         ready:function(){
+            if(this.formatNumber == 'on'){
+                this.data = parseFloat(this.value).toLocaleString('en-US');
+            }
+            else{
+                 this.data = this.value;
+            }
             this.customStyle['--gl-fontsize-label'] = this.fontSizeLabel;
             // console.log(this.customStyle['--gl-fontsize-label']);
             // this.customStyle['--el-color-bglabel'] = this.colorBglabel;
