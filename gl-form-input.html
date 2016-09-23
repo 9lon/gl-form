@@ -51,8 +51,8 @@
       }
       numeral-js{
         position: absolute;
-        font-size: 14px;
-        top: 24px;
+        font-size: 16px;
+        top: 26px;
         right: 0%;
        
       }
@@ -112,7 +112,7 @@
         </template>
         
         <div class="hide">
-           <numeral-js number="{{dataFormatNumber}}" format="0,0.00" print></numeral-js>
+           <numeral-js number="{{dataFormatNumber}}" format="{{formatNumber}}" print></numeral-js>
         </div>
          
         
@@ -136,11 +136,11 @@
                 },
                 formatNumber:{
                   type: String,
-                  value: 'off'
+                  value: '0,0.00'
                 }
             },
             ready:function(){
-              if(this.formatNumber == 'on')
+              if(this.formatNumber)
                 this.customStyle['--paper-input-show-number'] = "1";
               else
                 this.customStyle['--paper-input-show-number'] = "none";

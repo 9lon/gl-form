@@ -56,8 +56,8 @@
             }
         },
         ready:function(){
-            if(this.formatNumber == 'on'){
-                this.data = parseFloat(this.value).toLocaleString('en-US');
+            if(this.formatNumber == ""){
+                this.data = parseFloat(this.value).toLocaleString();
             }
             else{
                  this.data = this.value;

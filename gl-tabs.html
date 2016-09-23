@@ -1,34 +1,52 @@
 <link rel="import" href="./../polymer/polymer.html">
 <link rel="import" href="./../paper-tabs/paper-tabs.html">
 <link rel="import" href="./../iron-pages/iron-pages.html">
+<link rel="import" href="./../gl-styles/gl-color.html">
+<link rel="import" href="./../gl-styles/gl-size.html">
+
 
 <dom-module id="gl-tabs">
     <template>
-        <styles>
-            <style is="custom-style">
-                #container {
-                    max-width: 600px;
+        <style is="custom-style" include="iron-flex iron-flex-alignment gl-color gl-size">
+            #container {
+                max-width: 600px;
+            }
+            paper-tabs, paper-toolbar {
+                background-color: #f7941e;
+                color: #F2F2F2;
+                --paper-tabs-selection-bar:{
+                    height: 5px;
+                    background-color: var(--gl-info-color);
                 }
-                paper-tabs, paper-toolbar {
-                    background-color: var(--paper-blue-900);
-                    color: #fff;
-                }
-                .color1{
-                    color:red;
-                }
-            </style>
-        </styles>
-
-        <paper-tabs selected="{{selected}}">
-            <template is="dom-repeat" items="{{getData}}">   
-                <paper-tab>{{item.data}}</paper-tab>
+            }
+            paper-tab:focus > div.tab-content{
+                background-color: yellow;
+                opacity: 1;
+                font-weight: 0px;
+            }
+            paper-tab {
+                font-size: var(--font-size-h5);
+                font-family: 'rsuregular', sans-serif;
+                -webkit-font-smoothing: antialiased;
+            }
+            paper-tabs paper-tab.iron-selected {
+                font-size: var(--font-size-h4);
+                color: var(--gl-white-color);
+                background-color: var(--gl-info-color);
+            }
+        </style>
+        
+        <content select="section-content[name=0]"></content>
+        <content id="items" select="items"></content>
+        <paper-tabs selected="{{selected}}" align-bottom no-slide>
+            <template is="dom-repeat" items="{{row}}">   
+                <paper-tab>{{item.label}}</paper-tab>
             </template>
-        </paper-tabs>
-
+        </paper-tabs> 
         <iron-pages selected="{{selected}}">
-            <template is="dom-repeat" items="{{getData}}">   
+            <template is="dom-repeat" items="{{row}}">   
                 <div>
-                    <content select = "section-content[name={{item.data}}]"></content>
+                    <content select="section-content[data={{item.data}}]"></content>
                 </div>
             </template>
         </iron-pages>
@@ -40,10 +58,23 @@
             properties:{
               getData:{
                   type: Array
+              },
+              platForm :{
+                  type: String
               }
             },
             ready:function(){
                 this.selected = 0;
+
+                var items = Polymer.dom(this.$.items).getDistributedNodes();
+                var lists = Polymer.dom(items[0]).querySelectorAll('list');
+                var row = [];
+                lists.map(function(list){
+                    row.push({data:list.getAttribute('data'),label:list.getAttribute('label')});
+                });
+                // console.log(row);
+                this.row = row;
+                
             }
           
         });
