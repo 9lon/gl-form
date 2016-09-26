@@ -48,23 +48,27 @@
             :host-context([dir=rtl]) {
                 @apply(--layout-horizontal-reverse);
             }
+            iron-pages{
+                padding : 20px;
+            }
         </style>
         
-        <content select="section-content[name=0]"></content>
-        <content id="items" select="items"></content>
-        <paper-tabs selected="{{selected}}" align-bottom no-slide>
-            <template is="dom-repeat" items="{{row}}">   
-                <paper-tab>{{item.label}}</paper-tab>
-            </template>
-        </paper-tabs> 
-        <iron-pages selected="{{selected}}">
-            <template is="dom-repeat" items="{{row}}">   
-                <div>
-                    <content select="section-content[data={{item.data}}]"></content>
-                </div>
-            </template>
-        </iron-pages>
-      
+        <paper-material elevation="1">
+            <content select="section-content[name=0]"></content>
+            <content id="items" select="items"></content>
+            <paper-tabs selected="{{selected}}" align-bottom no-slide>
+                <template is="dom-repeat" items="{{row}}">   
+                    <paper-tab>{{item.label}}</paper-tab>
+                </template>
+            </paper-tabs> 
+            <iron-pages selected="{{selected}}">
+                <template is="dom-repeat" items="{{row}}">   
+                    <div>
+                        <content select="section-content[data={{item.data}}]"></content>
+                    </div>
+                </template>
+            </iron-pages>
+        </paper-material>
     </template>
     <script>
         Polymer({
