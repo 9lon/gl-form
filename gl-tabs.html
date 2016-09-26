@@ -1,8 +1,13 @@
 <link rel="import" href="./../polymer/polymer.html">
 <link rel="import" href="./../paper-tabs/paper-tabs.html">
+<link rel="import" href="./../paper-tabs/paper-tab.html">
 <link rel="import" href="./../iron-pages/iron-pages.html">
 <link rel="import" href="./../gl-styles/gl-color.html">
 <link rel="import" href="./../gl-styles/gl-size.html">
+<!-- test import-->
+<link rel="import" href="./../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="./../iron-menu-behavior/iron-menubar-behavior.html">
+<link rel="import" href="./../iron-resizable-behavior/iron-resizable-behavior.html">
 
 
 <dom-module id="gl-tabs">
@@ -33,6 +38,15 @@
                 font-size: var(--font-size-h4);
                 color: var(--gl-white-color);
                 background-color: var(--gl-info-color);
+            }
+             :host {
+                /*@apply(--layout);*/
+                @apply(--layout-center);
+                @apply(--paper-tabs);
+            }
+
+            :host-context([dir=rtl]) {
+                @apply(--layout-horizontal-reverse);
             }
         </style>
         

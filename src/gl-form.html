@@ -28,96 +28,8 @@
         .container {
             padding: 10px;
         }
-        
         h3 {
             font-family: Arial, Helvetica, sans-serif;
-        }
-        
-        #tabsContainer {
-            position: relative;
-            height: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-            @apply(--layout-flex-auto);
-        }
-        
-        #tabsContent {
-            height: 100%;
-            -moz-flex-basis: auto;
-            -ms-flex-basis: auto;
-            flex-basis: auto;
-        }
-        
-        #tabsContent.scrollable {
-            position: absolute;
-            white-space: nowrap;
-        }
-        
-        #tabsContent:not(.scrollable),
-        #tabsContent.scrollable.fit-container {
-            @apply(--layout-horizontal);
-        }
-        
-        #tabsContent.scrollable.fit-container {
-            min-width: 100%;
-        }
-        
-        #tabsContent.scrollable.fit-container >::content > * {
-            /* IE - prevent tabs from compressing when they should scroll. */
-            -ms-flex: 1 0 auto;
-            -webkit-flex: 1 0 auto;
-            flex: 1 0 auto;
-        }
-        
-        .hidden {
-            display: none;
-        }
-        
-        .not-visible {
-            opacity: 0;
-            cursor: default;
-        }
-        
-        paper-icon-button {
-            width: 48px;
-            height: 48px;
-            padding: 12px;
-            margin: 0 4px;
-        }
-        
-        #selectionBar {
-            position: absolute;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: var(--paper-tabs-selection-bar-color, --paper-yellow-a100);
-            -webkit-transform: scale(0);
-            transform: scale(0);
-            -webkit-transform-origin: left center;
-            transform-origin: left center;
-            transition: -webkit-transform;
-            transition: transform;
-            @apply(--paper-tabs-selection-bar);
-        }
-        
-        #selectionBar.align-bottom {
-            top: 0;
-            bottom: auto;
-        }
-        
-        #selectionBar.expand {
-            transition-duration: 0.15s;
-            transition-timing-function: cubic-bezier(0.4, 0.0, 1, 1);
-        }
-        
-        #selectionBar.contract {
-            transition-duration: 0.18s;
-            transition-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
-        }
-        
-        #tabsContent >::content > *:not(#selectionBar) {
-            height: 100%;
         }
     </style>
     <template>
@@ -130,7 +42,7 @@
             </items>
 
             <section-content data="data1">
-                <gl-form-input label="Money" required auto-validate error-message="needs some text!" format-number="0,0.0000"></gl-form-input>
+                <gl-form-input label="Money" required auto-validate error-message="needs some text!"></gl-form-input>
                 <gl-form-label-input label="Money" value="124599200.323234" format-number></gl-form-label-input>
                 <numeral-js number="10325321.345" format="0,0" print></numeral-js>
             </section-content>

@@ -136,10 +136,10 @@
                 },
                 formatNumber:{
                   type: String,
-                  value: '0,0.00'
+                  value: ''
                 }
             },
-            ready:function(){
+            ready:function(e){
               if(this.formatNumber)
                 this.customStyle['--paper-input-show-number'] = "1";
               else
