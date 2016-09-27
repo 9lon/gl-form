@@ -35,38 +35,35 @@
  
   <script>
       
-        Polymer({
+      Polymer({
         is:'gl-form-label-input',
         properties:{
             label:{
                 type:String,
                 value:'Title'
             },
-            value:{
+            formatNumber:{
                 type:String,
-                value:'Text'
+                value: 'off'
             },
             fontSizeLabel:{
                 type:String,
                 value:'18px'
             },
-             formatNumber:{
+            value:{
                 type:String,
-                value: 'off'
+                observer:'obValue'
             }
         },
-        ready:function(){
-            if(this.formatNumber == ""){
-                this.data = parseFloat(this.value).toLocaleString();
-            }
-            else{
-                 this.data = this.value;
-            }
-            this.customStyle['--gl-fontsize-label'] = this.fontSizeLabel;
-            // console.log(this.customStyle['--gl-fontsize-label']);
-            // this.customStyle['--el-color-bglabel'] = this.colorBglabel;
+        obValue:function(newValue,o){
+          if(this.formatNumber == ""){
+              this.data = parseFloat(newValue).toLocaleString();
+          }
+          else{
+               this.data = newValue;
+          }
+          this.customStyle['--gl-fontsize-label'] = this.fontSizeLabel;
         }
-    });
-      
+      })
   </script>
 </dom-module>
