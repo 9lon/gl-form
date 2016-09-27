@@ -49,7 +49,7 @@
                 @apply(--layout-horizontal-reverse);
             }
             iron-pages{
-                padding : 20px;
+                padding : var(--gl-form-padding);
             }
         </style>
         
@@ -77,13 +77,18 @@
               getData:{
                   type: Array
               },
+              setPadding:{
+                  type:String,
+                  value:"20px"
+              },
               platForm :{
                   type: String
               }
             },
             ready:function(){
+                this.customStyle['--gl-form-padding'] = this.setPadding;
+                
                 this.selected = 0;
-
                 var items = Polymer.dom(this.$.items).getDistributedNodes();
                 var lists = Polymer.dom(items[0]).querySelectorAll('list');
                 var row = [];

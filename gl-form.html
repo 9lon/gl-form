@@ -5,15 +5,13 @@
 <link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu-light.html">
 <link rel="import" href="../paper-listbox/paper-listbox.html">
 <link rel="import" href="../paper-item/paper-item.html">
-
 <link rel="import" href="./../iron-input/iron-input.html">
-
 <link rel="import" href="./../paper-input/paper-input-container.html">
 <link rel="import" href="./../paper-input/paper-input-error.html">
 <link rel="import" href="./../paper-input/demo/ssn-input.html">
 <link rel="import" href="./../paper-input/demo/ssn-validator.html">
-
 <link rel="import" href="./../iron-validator-behavior/iron-validator-behavior.html">
+<link rel="import" href="./../vaadin-combo-box/vaadin-combo-box.html">
 
 <link rel="import" href="gl-form-input.html">
 <link rel="import" href="gl-form-textarea.html">
@@ -22,6 +20,7 @@
 <link rel="import" href="gl-form-label-textarea.html">
 <link rel="import" href="gl-form-panel.html">
 <link rel="import" href="gl-tabs.html">
+<link rel="import" href="gl-combo-box.html">
 
 <dom-module id="gl-form">
     <style>
@@ -68,15 +67,12 @@
                 </gl-form-dropdown-menu>
             </section-content>
 
-               <section-content data="data4">
-                <gl-form-dropdown-menu label="ทดสอบ (dropdown menu)" auto-validate required disabled>
-                    <paper-listbox class="dropdown-content" selected="0">
-                        <paper-item value="ตัวอักษร">ตัวอักษร</paper-item>
-                        <paper-item value="ขนาด">ขนาด</paper-item>
-                        <paper-item value="สี">สี</paper-item>
-                        <paper-item value="ความถูกต้อง">ความถูกต้อง</paper-item>
-                    </paper-listbox>
-                </gl-form-dropdown-menu>
+            <section-content data="data4">
+                <items>
+                     <gl-combo-box label="Skill level" class="skillLevels" items="[[skillLevels]]" disabled value="Beginner" required auto-validate error-message="needs some text!"></gl-combo-box>
+                </items>
+               
+                <vaadin-combo-box label="Skill level" class="skillLevels" items="[[skillLevels]]"></vaadin-combo-box>
             </section-content>
 
         </gl-tabs>
@@ -84,6 +80,24 @@
     <script>
         Polymer({
             is: 'gl-form',
+            properties:{
+                skillLevels:{
+                    type: Array,
+                    value: [
+                         'Beginner', 
+                         'Intermediate', 
+                         'Advanced', 
+                         'Professional', 
+                         'Native' 
+                    ]
+                },
+                elementsJson:{
+                    value:[
+                        {name: 'Hydrogen', symbol: 'H', number: 1},
+                        {name: 'Helium', symbol: 'He', number: 2}
+                    ]
+                }
+            }
         });   
     </script>
 </dom-module>
