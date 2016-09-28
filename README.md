@@ -27,8 +27,6 @@ $ bower install glon/gl-form
 ```
 #gl-form-label-input , gl-form-label-textarea
 ![gl-form-label](http://i.imgur.com/z85U3Fn.png)
-- label การกำหนดชื่อให้กับ Input นั้น เช่น กรอก Username Name เป็นต้น
-- value การกำหนดค่าให้กับ Input เช่น test 1234
 ```bash
 <gl-form-label-input label="label" value="value"></gl-form-label-input>
 <gl-form-label-textarea label="label" value="value"></gl-form-label-textarea>
