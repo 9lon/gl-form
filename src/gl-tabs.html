@@ -82,8 +82,12 @@
                   value:"20px"
               },
               platForm :{
-                  type: String
+                  type: String,
+                  observer: 'changeStyle'
               }
+            },
+            changeStyle:function(e){
+                Polymer.dom(this.root).querySelector('paper-tabs').setAttribute(this.platForm,'');
             },
             ready:function(){
                 this.customStyle['--gl-form-padding'] = this.setPadding;
