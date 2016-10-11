@@ -269,7 +269,6 @@
       }
 
     },
-
     attached: function() {
       this._setInputElement(this.$.input);
 
@@ -299,6 +298,10 @@
 
     _getAriaExpanded: function(value) {
       return value.toString();
+    },
+    observers:['obValue(value)'],
+    obValue:function(val){
+      this.fire('combo-changed', val);
     }
   });
 
