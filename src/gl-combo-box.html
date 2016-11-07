@@ -302,6 +302,11 @@
     observers:['obValue(value)'],
     obValue:function(val){
       this.fire('combo-changed', val);
+    },
+    reset:function(){
+      this.value="";
+      this.customStyle['--paper-input-container-color'] =  "#737373";
+      this.updateStyles();
     }
   });
 

@@ -26,6 +26,14 @@
         /*font-family: 'rsuregular' !important;
         font-size: 18px !important;*/
       }
+       paper-input-container {
+        --paper-input-container-disabled:{
+            opacity: 1;
+        }
+        --paper-input-container-underline-disabled:{
+            display: none;
+        }
+      }
    </style>
     <template>
     <paper-input-container no-label-float$="[[noLabelFloat]]" always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel,placeholder)]]" auto-validate$="[[autoValidate]]" disabled$="[[disabled]]" invalid="[[invalid]]">
@@ -107,6 +115,11 @@
             },
             InputOnFocus : function(e){
                 // console.log('focus');
+                this.customStyle['--paper-input-container-color'] =  "#737373";
+                this.updateStyles();
+            },
+            reset:function(){
+                this.value="";
                 this.customStyle['--paper-input-container-color'] =  "#737373";
                 this.updateStyles();
             }

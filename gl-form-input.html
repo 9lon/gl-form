@@ -69,7 +69,7 @@
       }
     </style>
     <template>
-   <paper-input-container no-label-float="[[noLabelFloat]]" always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel,placeholder)]]" auto-validate$="[[autoValidate]]" disabled$="[[disabled]]" invalid="[[invalid]]">
+   <paper-input-container no-label-float="[[noLabelFloat]]" always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel,placeholder)]]" auto-validate$="{{autoValidate}}" disabled$="[[disabled]]" invalid="[[invalid]]">
       
         <content select="[prefix]"></content>
 
@@ -157,6 +157,7 @@
               this.dataFormatNumber = e.target.value;
             },
             InputOnBlur : function(e){
+              e.target.validate;
                 if(e.target.validate()){
                     // console.log('Sucess!!');
                     this.customStyle['--paper-input-container-color'] =  "green";
@@ -167,6 +168,13 @@
                 // console.log('focus');
                 this.customStyle['--paper-input-container-color'] =  "#737373";
                 this.updateStyles();
+            },
+            reset:function(){
+              console.log('validate',this.autoValidate);
+              console.log(this.validator);
+              this.value="";
+              this.customStyle['--paper-input-container-color'] =  "#737373";
+              this.updateStyles();
             }
             });
     </script>
