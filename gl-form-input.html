@@ -60,6 +60,12 @@
         --paper-input-container-disabled:{
             opacity: 1;
         }
+        --paper-input-container-label:{
+          color: var(--paper-input-label-color-success);
+        }
+        --paper-input-container-underline:{
+          border-bottom: var(--paper-input-border-success);
+        }
         --paper-input-container-underline-disabled:{
             display: none;
         }
@@ -181,7 +187,7 @@
               if(this.statDisabled == true && typeof(this.statFormat) != 'undefined'){
                 if(this.statFormat == ""){
                   this.statFormat = this.setFormatNumber;
-                  console.log(this.statFormat);
+                  // console.log(this.statFormat);
                 }
                 var value = this.$$('input').value;
                 this.value = numeral(value).format(this.statFormat);
@@ -194,7 +200,8 @@
               e.target.validate;
                 if(e.target.validate()){
                     // console.log('Sucess!!');
-                    this.customStyle['--paper-input-container-color'] =  "green";
+                    this.customStyle['--paper-input-border-success'] =  "0.5px solid green";
+                    this.customStyle['--paper-input-label-color-success'] = "green";
                 }
                 // if(this.formatNumber == ""){
                 //   e.target.value = numeral(e.target.value).format(this.setFormatNumber);
@@ -204,17 +211,27 @@
             _obformatNumber:function(number){
               return numeral(number).format(this.setFormatNumber);
             },
-            InputOnFocus : function(e){
+            InputOnFocus:function(e){
                 // console.log('focus');
-                this.customStyle['--paper-input-container-color'] =  "#737373";
+                this.customStyle['--paper-input-label-color-success'] = "#737373";
+                // this.customStyle['--paper-input-container-color'] =  "#737373";
                 this.updateStyles();
+            },
+            getValue:function(){
+              // console.log(this.value);
+              var data = numeral().unformat(this.value);
+              return data;
             },
             reset:function(){
               //console.log(this.$$('input').required);
               this.value="";
-              this.$$('input').removeAttribute('required');
-              this.$$('input').validate();
-              this.$$('input').setAttribute("required", true);
+              if(this.required == true){
+                this.$$('input').removeAttribute('required');
+                this.$$('input').validate();
+                this.$$('input').setAttribute("required", true);
+              }
+              this.customStyle['--paper-input-border-success'] =  "0px solid #737373";
+              this.customStyle['--paper-input-label-color-success'] = "#737373";
               this.customStyle['--paper-input-container-color'] =  "#737373";
               this.updateStyles();
             }

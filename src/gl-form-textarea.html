@@ -30,6 +30,12 @@
         --paper-input-container-disabled:{
             opacity: 1;
         }
+        --paper-input-container-label:{
+          color: var(--paper-input-label-color-success);
+        }
+        --paper-input-container-underline:{
+          border-bottom: var(--paper-input-border-success);
+        }
         --paper-input-container-underline-disabled:{
             display: none;
         }
@@ -109,17 +115,21 @@
                 // console.log(e.target.validate());
                 if(e.target.validate()){
                     // console.log('Sucess!!');
-                    this.customStyle['--paper-input-container-color'] =  "green";
+                    this.customStyle['--paper-input-border-success'] =  "  1px solid green";
+                    this.customStyle['--paper-input-label-color-success'] = "green";
                 }
                 this.updateStyles();
             },
             InputOnFocus : function(e){
                 // console.log('focus');
-                this.customStyle['--paper-input-container-color'] =  "#737373";
+                this.customStyle['--paper-input-label-color-success'] = "#737373";
+                // this.customStyle['--paper-input-container-color'] =  "#737373";
                 this.updateStyles();
             },
             reset:function(){
                 this.value="";
+                this.customStyle['--paper-input-border-success'] =  "0px solid #737373";
+                this.customStyle['--paper-input-label-color-success'] = "#737373";
                 this.customStyle['--paper-input-container-color'] =  "#737373";
                 this.updateStyles();
             }
