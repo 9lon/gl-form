@@ -7,7 +7,7 @@
 <link rel="import" href="../paper-input/paper-input-char-counter.html">
 <link rel="import" href="../paper-input/paper-input-container.html">
 <link rel="import" href="./../numeral-js/numeral-js.html">
-
+<script src="./../numeral/min/numeral.min.js"></script>
 <!--<link rel="import" href="../gl-font/gl-rsu-font.html">-->
 <!--include="gl-rsu-font"-->
 <dom-module id="gl-form-input">
@@ -111,17 +111,16 @@
             multiple$="[[multiple]]" 
             on-blur="InputOnBlur" 
             on-focus="InputOnFocus"
-            on-keyUp="_formatNumber">
-
+            on-keyUp="_formatNumber"
+            >
         <content select="[suffix]"></content>
-        
         <template is="dom-if" if="[[errorMessage]]">
             <paper-input-error aria-live="assertive">[[errorMessage]]</paper-input-error>
         </template>
         
-        <div class="hide">
+        <!--<div class="hide">
            <numeral-js number="{{dataFormatNumber}}" format="{{formatNumber}}" print></numeral-js>
-        </div>
+        </div>-->
          
         
         <template is="dom-if" if="[[charCounter]]">
@@ -137,14 +136,29 @@
                 Polymer.IronFormElementBehavior,
                 Polymer.PaperInputBehavior
             ],
+            // observers:['_disabledNumber()'],
             properties:{
                 dataFormatNumber:{
                   type: String,
                   value: ''
                 },
                 formatNumber:{
+                  observer: '_chkFormat'
+                },
+                setFormatNumber:{
                   type: String,
-                  value: ''
+                  value: '0,0.00'
+                },
+                disabled:{
+                  observer: '_chkdisabled'
+                },
+                statDisabled:{
+                  type: Boolean,
+                  value: false
+                },
+                statFormat:{
+                  type: Boolean,
+                  value: false
                 }
             },
             ready:function(e){
@@ -152,6 +166,26 @@
                 this.customStyle['--paper-input-show-number'] = "1";
               else
                 this.customStyle['--paper-input-show-number'] = "none";
+            },
+            _chkdisabled:function(e){
+              // console.log(e);
+              this.statDisabled = e;
+              this._disabledNumber();
+            },
+            _chkFormat:function(e){
+              // console.log('_chkFormat',e);
+              this.statFormat = e;
+              this._disabledNumber();   
+            },
+            _disabledNumber:function(){
+              if(this.statDisabled == true && typeof(this.statFormat) != 'undefined'){
+                if(this.statFormat == ""){
+                  this.statFormat = this.setFormatNumber;
+                  console.log(this.statFormat);
+                }
+                var value = this.$$('input').value;
+                this.value = numeral(value).format(this.statFormat);
+              }
             },
             _formatNumber:function(e){
               this.dataFormatNumber = e.target.value;
@@ -162,7 +196,13 @@
                     // console.log('Sucess!!');
                     this.customStyle['--paper-input-container-color'] =  "green";
                 }
+                // if(this.formatNumber == ""){
+                //   e.target.value = numeral(e.target.value).format(this.setFormatNumber);
+                // }
                 this.updateStyles();
+            },
+            _obformatNumber:function(number){
+              return numeral(number).format(this.setFormatNumber);
             },
             InputOnFocus : function(e){
                 // console.log('focus');
@@ -170,9 +210,11 @@
                 this.updateStyles();
             },
             reset:function(){
-              console.log('validate',this.autoValidate);
-              console.log(this.validator);
+              //console.log(this.$$('input').required);
               this.value="";
+              this.$$('input').removeAttribute('required');
+              this.$$('input').validate();
+              this.$$('input').setAttribute("required", true);
               this.customStyle['--paper-input-container-color'] =  "#737373";
               this.updateStyles();
             }

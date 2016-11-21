@@ -220,6 +220,12 @@
                 if(e == true)
                    this.customStyle['--gl-dropdownmenu-disabled'] = "none";
                 else this.customStyle['--gl-dropdownmenu-disabled'] = "on";
+
+                if(this.$$('paper-menu-button').disabled == true)
+                    this.customStyle['--gl-dropdownmenu-disabled'] = "none";
+                else this.customStyle['--gl-dropdownmenu-disabled'] = "on";
+
+                this.updateStyles();
             },
             DropdownMenuOnBlur : function(e){
                 if(e.target.value){

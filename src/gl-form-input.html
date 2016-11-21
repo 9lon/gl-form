@@ -196,9 +196,9 @@
                     // console.log('Sucess!!');
                     this.customStyle['--paper-input-container-color'] =  "green";
                 }
-                if(this.formatNumber){
-                  e.target.value = numeral(e.target.value).format(this.setFormatNumber);
-                }
+                // if(this.formatNumber == ""){
+                //   e.target.value = numeral(e.target.value).format(this.setFormatNumber);
+                // }
                 this.updateStyles();
             },
             _obformatNumber:function(number){
@@ -210,7 +210,6 @@
                 this.updateStyles();
             },
             reset:function(){
-           
               //console.log(this.$$('input').required);
               this.value="";
               this.$$('input').removeAttribute('required');

@@ -41,17 +41,17 @@
             </items>
 
             <section-content data="data1">
-                <gl-form-input label="Money" required auto-validate error-message="needs some text!" value="1234" disabled></gl-form-input>
-                <gl-form-label-input label="Money" value="124599200.323234" format-number></gl-form-label-input>
+                <gl-form-input label="Money" format-number disabled value="1234321"></gl-form-input>
+                <gl-form-label-input label="Money" value="1234321321123.323234" set-format-number="0,00.0000" format-number></gl-form-label-input>
                 <numeral-js number="10325321.345" format="0,0" print></numeral-js>
                 <gl-form-textarea label="text" value="123456" disabled></gl-form-textarea>
             </section-content>
 
             <section-content data="data2">
-                <!--<gl-form-label-input label="Money" value="124599200.32" format-number="on"></gl-form-label-input>-->
-                <gl-form-input id="resetInput" label="this input requires some text" required auto-validate error-message="needs some text!"></gl-form-input>
+                <gl-form-label-input id="resetInput" label="Money" value="124599200.32" format-number="on"></gl-form-label-input>
+                <gl-form-input id="resetInput" label="this input" format-number="0,0" disabled required auto-validate error-message="needs some text!" value="12345321"></gl-form-input>
                 <gl-form-textarea id="resetInput" label="Text" value="12345" auto-validate disabled></gl-form-textarea>
-                  <gl-form-dropdown-menu id="resetInput" label="ทดสอบ (dropdown menu)">
+                  <gl-form-dropdown-menu id="resetInput" disabled="true" label="ทดสอบ (dropdown menu)">
                     <paper-listbox class="dropdown-content">
                         <paper-item value="ตัวอักษร">ตัวอักษร</paper-item>
                         <paper-item value="ขนาด">ขนาด</paper-item>
@@ -98,13 +98,18 @@
                     ]
                 }
             },
+            ready:function(){
+                console.log(this.$$('gl-form-input').value);
+                var number = numeral().unformat(this.$$('gl-form-input').value);
+                // this.$$('gl-form-input').value = numeral('20000').format('0,0');
+            },
             resetInput:function(){
                 ///console.log(this.$('#resetInput'));
                 //this.$$('#resetInput').reset();
                 //Polymer.dom(this.root).querySelectorAll('#resetInput').reset();
-                console.log(Polymer.dom(this.root).querySelectorAll('#resetInput'));
+                // console.log(Polymer.dom(this.root).querySelectorAll('#resetInput'));
                 Polymer.dom(this.root).querySelectorAll('#resetInput').map((el)=>{
-                    console.log(el);
+                    // console.log(el);
                     el.reset();
                 })
             }

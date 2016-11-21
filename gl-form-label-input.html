@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-input/paper-input.html">
+<script src="./../numeral/min/numeral.min.js"></script>
 <!--<link rel="stylesheet" href="../font/rsu/stylesheet.css">-->
 <dom-module id="gl-form-label-input">
     <style>
@@ -44,7 +45,12 @@
             },
             formatNumber:{
                 type:String,
-                value: 'off'
+                value: 'off',
+                observer: '_obFormatNumber'
+            },
+            setFormatNumber:{
+                type: String,
+                value: '0,0.00'
             },
             fontSizeLabel:{
                 type:String,
@@ -55,14 +61,21 @@
                 observer:'obValue'
             }
         },
+        _obFormatNumber:function(){
+            this.formatNumber = true;
+        },
         obValue:function(newValue,o){
           if(this.formatNumber == ""){
-              this.data = parseFloat(newValue).toLocaleString();
+              //this.data = parseFloat(newValue).toLocaleString();
+              this.data = numeral(newValue).format(this.setFormatNumber);
           }
           else{
                this.data = newValue;
           }
           this.customStyle['--gl-fontsize-label'] = this.fontSizeLabel;
+        },
+        reset:function(){
+            this.value = '';
         }
       })
   </script>
