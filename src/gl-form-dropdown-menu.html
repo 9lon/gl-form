@@ -236,10 +236,10 @@
                     this.customStyle['--paper-input-border-success'] =  "2px solid green";
                     this.customStyle['--paper-input-label-color-success'] = "green";
                 }
-                else {
-                    this.customStyle['--paper-input-border-success'] =  "2px solid red";
-                }
-        
+                // else {
+                //     this.customStyle['--paper-input-border-success'] =  "2px solid red";
+                // }
+                this.$$('paper-input').validate();
                 this.updateStyles();
             },
             DropdownMenuOnFocus : function(e){
