@@ -200,7 +200,7 @@
               e.target.validate;
                 if(e.target.validate()){
                     // console.log('Sucess!!');
-                    this.customStyle['--paper-input-border-success'] =  "0.5px solid green";
+                    this.customStyle['--paper-input-border-success'] =  "2px solid green";
                     this.customStyle['--paper-input-label-color-success'] = "green";
                 }
                 // if(this.formatNumber == ""){
@@ -224,7 +224,7 @@
             },
             reset:function(){
               //console.log(this.$$('input').required);
-              this.value="";
+              // this.value="";
               if(this.required == true){
                 this.$$('input').removeAttribute('required');
                 this.$$('input').validate();

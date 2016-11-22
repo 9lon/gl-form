@@ -233,7 +233,7 @@
             },
             DropdownMenuOnBlur : function(e){
                 if(e.target.value){
-                    this.customStyle['--paper-input-border-success'] =  "1px solid green";
+                    this.customStyle['--paper-input-border-success'] =  "2px solid green";
                     this.customStyle['--paper-input-label-color-success'] = "green";
                 }
                 else {
@@ -247,8 +247,13 @@
                 this.updateStyles();
             },
             reset:function(){
-                this._setSelectedItemLabel("");
-                this.customStyle['--paper-input-border-success'] =  "0px solid #737373";
+                // this._setSelectedItemLabel("");
+                if(this.required == true){
+                    this.$$('paper-input').removeAttribute('required');
+                    this.$$('paper-input').validate();
+                    this.$$('paper-input').setAttribute("required", true);
+                }
+                this.customStyle['--paper-input-border-success'] =  "1px solid #737373";
                 this.customStyle['--paper-input-label-color-success'] = "#737373";
                 this.customStyle['--paper-input-container-color'] =  "#737373";
                 this.updateStyles();
