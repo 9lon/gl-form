@@ -8,7 +8,8 @@
 <link rel="import" href="../paper-input/paper-input-container.html">
 <link rel="import" href="./../numeral-js/numeral-js.html">
 <script src="./../numeral/min/numeral.min.js"></script>
-<!--<link rel="import" href="../gl-font/gl-rsu-font.html">-->
+<link rel="import" href="../gl-font/gl-cschatthai-font.html">
+<link rel="import" href="../gl-font/gl-rsu-font.html">
 <!--include="gl-rsu-font"-->
 <dom-module id="gl-form-input">
     <style> 
@@ -46,8 +47,8 @@
         font-size: 22px !important;
       }
       input{
-        /*font-family: 'rsuregular' !important;
-        font-size: 18px !important;*/
+        font-family: 'CSChatThaiUI', sans-serif !important;
+        -webkit-font-smoothing: antialiased;
       }
       numeral-js{
         position: absolute;
@@ -200,7 +201,7 @@
               e.target.validate;
                 if(e.target.validate()){
                     // console.log('Sucess!!');
-                    this.customStyle['--paper-input-border-success'] =  "2px solid green";
+                    this.customStyle['--paper-input-border-success'] =  "1px solid green";
                     this.customStyle['--paper-input-label-color-success'] = "green";
                 }
                 // if(this.formatNumber == ""){

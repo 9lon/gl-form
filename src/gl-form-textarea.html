@@ -7,6 +7,8 @@
 <link rel="import" href="../bower_components/paper-input/paper-input-container.html">
 <link rel="import" href="../bower_components/paper-input/paper-input-error.html">
 
+<link rel="import" href="">
+
 
 <dom-module id="gl-form-textarea">
    <style>
@@ -127,7 +129,7 @@
                 this.updateStyles();
             },
             reset:function(){
-                this.value="";
+                // this.value="";
                 this.customStyle['--paper-input-border-success'] =  "0px solid #737373";
                 this.customStyle['--paper-input-label-color-success'] = "#737373";
                 this.customStyle['--paper-input-container-color'] =  "#737373";

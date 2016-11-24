@@ -9,7 +9,7 @@
 <link rel="import" href="../bower_components/paper-menu-button/paper-menu-button.html">
 <link rel="import" href="../bower_components/paper-ripple/paper-ripple.html">
 <link rel="import" href="../bower_components/paper-styles/default-theme.html">
-
+<link rel="import" href="../bower_components/gl-font/gl-cschatthai-font.html">
 <link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu-icons.html">
 <link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu-shared-styles.html">
 
@@ -18,13 +18,22 @@
 
     <template>
     <style include="paper-dropdown-menu-shared-styles">
+       paper-menu-button{
+            font-family: 'rsuregular', sans-serif !important;
+            -webkit-font-smoothing: antialiased;
+        }
         paper-input{
           --paper-input-container-label:{
               font-size:var(--gl-fontsize-label);
-              font-size: 22px;
-              font-family: 'rsuregular';
+              font-size: 20px;
+              font-family: 'rsuregular', sans-serif;
+              -webkit-font-smoothing: antialiased;
               font-weight: bold;
               color: var(--paper-input-label-color-success);
+          }
+          --paper-input-container-input:{
+              font-family: 'CSChatThaiUI', sans-serif;
+              -webkit-font-smoothing: antialiased;
           }
            --paper-input-container-disabled:{
               opacity: 1;
@@ -233,7 +242,7 @@
             },
             DropdownMenuOnBlur : function(e){
                 if(e.target.value){
-                    this.customStyle['--paper-input-border-success'] =  "2px solid green";
+                    this.customStyle['--paper-input-border-success'] =  "1px solid green";
                     this.customStyle['--paper-input-label-color-success'] = "green";
                 }
                 // else {

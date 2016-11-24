@@ -11,6 +11,8 @@
 <link rel="import" href="./../bower_components/vaadin-combo-box/vaadin-combo-box-overlay.html">
 <link rel="import" href="./../bower_components/vaadin-combo-box/vaadin-combo-box-shared-styles.html">
 <link rel="import" href="./../bower_components/vaadin-combo-box/vaadin-combo-box-icons.html">
+<link rel="import" href="../bower_components/gl-font/gl-rsu-font.html">
+<link rel="import" href="../bower_components/gl-font/gl-cschatthai-font.html">
 
 <dom-module id="gl-combo-box">
   <style include="vaadin-combo-box-shared-styles">
@@ -88,6 +90,9 @@
         --paper-input-container-disabled:{
             opacity: 1;
         }
+        --paper-input-container-underline:{
+          border-bottom: var(--paper-input-border-success);
+        }
         --paper-input-container-underline-disabled:{
             display: none;
         }
@@ -96,8 +101,14 @@
           font-size: 22px;
           font-family: 'rsuregular';
           font-weight: bold;
+          color: var(--paper-input-label-color-success);
+        }
+        --paper-input-container-input:{
+          font-family: 'CSChatThaiUI', sans-serif !important;
+          -webkit-font-smoothing: antialiased;
         }
     }
+    
     
   </style>
 
@@ -279,7 +290,8 @@
 
     onBlur:function(e){
       if(e.target.validate()){
-            this.customStyle['--paper-input-container-color'] =  "green";
+            this.customStyle['--paper-input-border-success'] =  "1px solid green";
+            this.customStyle['--paper-input-label-color-success'] = "green";
         }
         this.updateStyles();
     },
@@ -304,7 +316,9 @@
       this.fire('combo-changed', val);
     },
     reset:function(){
-      this.value="";
+      // this.value="";
+      this.customStyle['--paper-input-border-success'] =  "1px solid #737373";
+      this.customStyle['--paper-input-label-color-success'] = "#737373";
       this.customStyle['--paper-input-container-color'] =  "#737373";
       this.updateStyles();
     }

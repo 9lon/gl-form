@@ -41,6 +41,8 @@
             </items>
 
             <section-content data="data1">
+                <gl-form-label-input label="ทดสอบ" value="ตัวอักษร"></gl-form-label-input>
+                 <gl-form-label-textarea label="ทดสอบ" value="ตัวอักษร"></gl-form-label-textarea>
                 <gl-form-input label="Money" value="1234321"></gl-form-input>
                 <gl-form-label-input label="Money" value="1234321321123.323234" set-format-number="0,00.0000" format-number></gl-form-label-input>
                 <numeral-js number="10325321.345" format="0,0" print></numeral-js>
@@ -62,7 +64,7 @@
                 </gl-form-dropdown-menu>
                 <gl-form-textarea id="resetInput" label="text" error-message="needs some text!"></gl-form-textarea>
                 <paper-button on-tap="resetInput"raised>Reset</paper-button>
-                
+                <gl-combo-box id="resetInput" label="Skill level" class="skillLevels" items="[[skillLevels]]" value="Beginner" required auto-validate error-message="needs some text!"></gl-combo-box>
             </section-content>
 
             <section-content data="data3">
@@ -71,10 +73,10 @@
 
             <section-content data="data4">
                 <items>
-                     <gl-combo-box label="Skill level" class="skillLevels" items="[[skillLevels]]" disabled value="Beginner" required auto-validate error-message="needs some text!"></gl-combo-box>
+                     <gl-combo-box label="Skill level" class="skillLevels" items="[[skillLevels]]" value="Beginner" required auto-validate error-message="needs some text!"></gl-combo-box>
                 </items>
                
-                <vaadin-combo-box label="Skill level" class="skillLevels" items="[[skillLevels]]"></vaadin-combo-box>
+                <!--<vaadin-combo-box label="Skill level" class="skillLevels" items="[[skillLevels]]"></vaadin-combo-box>-->
             </section-content>
 
         </gl-tabs>
@@ -86,8 +88,8 @@
                 skillLevels:{
                     type: Array,
                     value: [
-                         'Beginner', 
-                         'Intermediate', 
+                         'ทดสอบ', 
+                         'ตัวอักษร', 
                          'Advanced', 
                          'Professional', 
                          'Native' 
