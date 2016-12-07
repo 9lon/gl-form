@@ -10,6 +10,7 @@
 <script src="./../numeral/min/numeral.min.js"></script>
 <link rel="import" href="../gl-font/gl-cschatthai-font.html">
 <link rel="import" href="../gl-font/gl-rsu-font.html">
+
 <!--include="gl-rsu-font"-->
 <dom-module id="gl-form-input">
     <style> 
@@ -50,6 +51,9 @@
         font-family: 'CSChatThaiUI', sans-serif !important;
         -webkit-font-smoothing: antialiased;
       }
+      /*input[type=text]{
+        text-align: right !important;
+      }*/
       numeral-js{
         position: absolute;
         font-size: 16px;
@@ -118,9 +122,7 @@
             multiple$="[[multiple]]" 
             on-blur="InputOnBlur" 
             on-focus="InputOnFocus"
-            on-keyUp="_formatNumber"
-            >
-        <content select="[suffix]"></content>
+            <content select="[suffix]"></content>
         <template is="dom-if" if="[[errorMessage]]">
             <paper-input-error aria-live="assertive">[[errorMessage]]</paper-input-error>
         </template>
@@ -137,95 +139,67 @@
         </paper-input-container>
     </template>
     <script>
+
         Polymer({
             is: 'gl-form-input',
             behaviors : [
                 Polymer.IronFormElementBehavior,
                 Polymer.PaperInputBehavior
             ],
-            // observers:['_disabledNumber()'],
+            observers:['numberPattle(value)'],
             properties:{
-                dataFormatNumber:{
-                  type: String,
-                  value: ''
-                },
                 formatNumber:{
-                  observer: '_chkFormat'
-                },
-                setFormatNumber:{
-                  type: String,
-                  value: '0,0.00'
-                },
-                disabled:{
-                  observer: '_chkdisabled'
-                },
-                statDisabled:{
-                  type: Boolean,
-                  value: false
-                },
-                statFormat:{
-                  type: Boolean,
-                  value: false
+                  observer:'checkFormat' 
                 }
             },
-            ready:function(e){
-              if(this.formatNumber)
-                this.customStyle['--paper-input-show-number'] = "1";
-              else
-                this.customStyle['--paper-input-show-number'] = "none";
+            checkFormat:function(){
+              // console.log(typeof this.formatNumber == 'string');
             },
-            _chkdisabled:function(e){
-              // console.log(e);
-              this.statDisabled = e;
-              this._disabledNumber();
-            },
-            _chkFormat:function(e){
-              // console.log('_chkFormat',e);
-              this.statFormat = e;
-              this._disabledNumber();   
-            },
-            _disabledNumber:function(){
-              if(this.statDisabled == true && typeof(this.statFormat) != 'undefined'){
-                if(this.statFormat == ""){
-                  this.statFormat = this.setFormatNumber;
-                  // console.log(this.statFormat);
-                }
-                var value = this.$$('input').value;
-                this.value = numeral(value).format(this.statFormat);
+            numberPattle:function(Num){
+              if(typeof this.formatNumber == 'string'){
+                Num += '';
+                Num = Num.replace(/,/g, '');
+                x = Num.split('.');
+                x1 = x[0];
+                x2 = x.length > 1 ? '.' + x[1] : '';
+                var rgx = /(\d+)(\d{3})/;
+                while (rgx.test(x1))
+                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                // let charReg = /[a-z||A-Z||ก-ฮ]/;
+                // if(Num.match(charReg)){
+                //     this.sum = '';
+                //     x1 = '';
+                //     x2 = '';
+                // }
+                this.$$('input').value = x1 + x2;
               }
-            },
-            _formatNumber:function(e){
-              this.dataFormatNumber = e.target.value;
             },
             InputOnBlur : function(e){
               e.target.validate;
                 if(e.target.validate()){
-                    // console.log('Sucess!!');
                     this.customStyle['--paper-input-border-success'] =  "1px solid green";
                     this.customStyle['--paper-input-label-color-success'] = "green";
                 }
-                // if(this.formatNumber == ""){
-                //   e.target.value = numeral(e.target.value).format(this.setFormatNumber);
-                // }
                 this.updateStyles();
             },
-            _obformatNumber:function(number){
-              return numeral(number).format(this.setFormatNumber);
-            },
-            InputOnFocus:function(e){
-                // console.log('focus');
+            InputOnFocus:function(e){        
                 this.customStyle['--paper-input-label-color-success'] = "#737373";
-                // this.customStyle['--paper-input-container-color'] =  "#737373";
                 this.updateStyles();
             },
             getValue:function(){
-              // console.log(this.value);
-              var data = numeral().unformat(this.value);
-              return data;
+              this.value.toString();
+              let charReg = /[a-z||A-Z||ก-ฮ]/;
+              if(this.value.match(charReg)){
+                var data = this.value;
+                return data;
+              }
+              else {
+                var data = numeral().unformat(this.value);
+                return data;
+              }
+             
             },
             reset:function(){
-              //console.log(this.$$('input').required);
-              // this.value="";
               if(this.required == true){
                 this.$$('input').removeAttribute('required');
                 this.$$('input').validate();

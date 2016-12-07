@@ -30,6 +30,11 @@
        *{
             font-family: Arial, Helvetica, sans-serif;
         }
+        /*gl-form-input{
+            --paper-input-container-input:{
+                 text-align: right;
+            }  
+        }*/
     </style>
     <template>
         <gl-tabs>
@@ -41,18 +46,16 @@
             </items>
 
             <section-content data="data1">
-                <gl-form-label-input label="ทดสอบ" value="ตัวอักษร"></gl-form-label-input>
-                 <gl-form-label-textarea label="ทดสอบ" value="ตัวอักษร"></gl-form-label-textarea>
-                <gl-form-input label="Money" value="1234321"></gl-form-input>
-                <gl-form-label-input label="Money" value="1234321321123.323234" set-format-number="0,00.0000" format-number></gl-form-label-input>
-                <numeral-js number="10325321.345" format="0,0" print></numeral-js>
-                <gl-form-textarea label="text" value="123456" disabled></gl-form-textarea>
+               
+                <gl-form-input label="Money" id="price" value="{{num}}" data="{{num}}" format-number></gl-form-input>
+                <gl-form-textarea label="text" format-number></gl-form-textarea>
+                <paper-button raised on-tap="getValue">GetValue</paper-button>
             </section-content>
 
             <section-content data="data2">
-                <gl-form-label-input id="resetInput" label="Money" value="124599200.32" format-number="on"></gl-form-label-input>
-                 <gl-form-input id="resetInput" label="input"></gl-form-input>
-                <gl-form-input id="resetInput" label="this input" format-number="0,0" required auto-validate error-message="needs some text!" value="12345321"></gl-form-input>
+                <!--<gl-form-label-input id="resetInput" label="Money" value="124599200.32"></gl-form-label-input>
+                 <gl-form-input disabled$={{stat}} id="resetInput" label="input"></gl-form-input>
+                <gl-form-input id="resetInput" label="this input" required auto-validate error-message="needs some text!" value="12345321"></gl-form-input>
                 <gl-form-textarea id="resetInput" label="Text" value="12345" auto-validate disabled></gl-form-textarea>
                   <gl-form-dropdown-menu id="resetInput" validate label="ทดสอบ (dropdown menu)">
                     <paper-listbox class="dropdown-content">
@@ -64,7 +67,8 @@
                 </gl-form-dropdown-menu>
                 <gl-form-textarea id="resetInput" label="text" error-message="needs some text!"></gl-form-textarea>
                 <paper-button on-tap="resetInput"raised>Reset</paper-button>
-                <gl-combo-box id="resetInput" label="Skill level" class="skillLevels" items="[[skillLevels]]" value="Beginner" required auto-validate error-message="needs some text!"></gl-combo-box>
+                <paper-button raised on-tap="edit">Edit</paper-button>  
+                <gl-combo-box id="resetInput" label="Skill level" class="skillLevels" items="[[skillLevels]]" value="Beginner" required auto-validate error-message="needs some text!"></gl-combo-box>-->
             </section-content>
 
             <section-content data="data3">
@@ -82,6 +86,7 @@
         </gl-tabs>
     </template>
     <script>
+  
         Polymer({
             is: 'gl-form',
             properties:{
@@ -103,9 +108,7 @@
                 }
             },
             ready:function(){
-                var number = numeral().unformat(this.$$('gl-form-input').value);
-                console.log(this.$$('gl-form-input').getValue());
-                // this.$$('gl-form-input').value = numeral('20000').format('0,0');
+                this.num = '100000.321231';
             },
             resetInput:function(){
                 //console.log(this.$('#resetInput'));
@@ -116,7 +119,19 @@
                     // console.log(el);
                     el.reset();
                 })
-            }
+            },
+            getValue:function(){
+                console.log(this.$$('#price').getValue());
+            },
+            edit:function(){
+                this.stat =!this.stat;
+            },
+            ddd:function(num){
+                console.log('1234');   
+                return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+               //this.$$('#price').value = num;
+               //console.log('xxx')
+            },
         });   
     </script>
 </dom-module>

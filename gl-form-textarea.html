@@ -83,12 +83,15 @@
                 Polymer.PaperInputBehavior,
                 Polymer.IronFormElementBehavior
             ],
+            observers:['numberPattle(value)'],
              properties: {
                 _ariaLabelledBy: {
                     observer: '_ariaLabelledByChanged',
                     type: String
                 },
-
+                formatNumber:{
+                  observer:'checkFormat' 
+                },
                 _ariaDescribedBy: {
                     observer: '_ariaDescribedByChanged',
                     type: String
@@ -101,6 +104,28 @@
                 type: Number,
                 value: 0
                 }
+            },
+            checkFormat:function(){
+              // console.log(typeof this.formatNumber == 'string');
+            },
+            numberPattle:function(Num){
+              if(typeof this.formatNumber == 'string'){
+                Num += '';
+                Num = Num.replace(/,/g, '');
+                x = Num.split('.');
+                x1 = x[0];
+                x2 = x.length > 1 ? '.' + x[1] : '';
+                var rgx = /(\d+)(\d{3})/;
+                while (rgx.test(x1))
+                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                // let charReg = /[a-z||A-Z||ก-ฮ]/;
+                // if(Num.match(charReg)){
+                //     this.sum = '';
+                //     x1 = '';
+                //     x2 = '';
+                // }
+                this.$$('iron-autogrow-textarea').value = x1 + x2;
+              }
             },
             _ariaLabelledByChanged: function(ariaLabelledBy) {
             this.$.input.textarea.setAttribute('aria-labelledby', ariaLabelledBy);
@@ -127,6 +152,19 @@
                 this.customStyle['--paper-input-label-color-success'] = "#737373";
                 // this.customStyle['--paper-input-container-color'] =  "#737373";
                 this.updateStyles();
+            },
+            getValue:function(){
+              this.$$('iron-autogrow-textarea').value.toString();
+              let charReg = /[a-z||A-Z||ก-ฮ]/;
+              if(this.value.match(charReg)){
+                var data = this.$$('iron-autogrow-textarea').value;
+                return data;
+              }
+              else {
+                var data = numeral().unformat(this.$$('iron-autogrow-textarea').value);
+                return data;
+              }
+             
             },
             reset:function(){
                 // this.value="";
