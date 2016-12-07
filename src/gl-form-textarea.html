@@ -90,6 +90,8 @@
                     type: String
                 },
                 formatNumber:{
+                  type: String,
+                  value: 'off',
                   observer:'checkFormat' 
                 },
                 _ariaDescribedBy: {
@@ -106,10 +108,10 @@
                 }
             },
             checkFormat:function(){
-              // console.log(typeof this.formatNumber == 'string');
+                return typeof this.formatNumber == 'string';
             },
             numberPattle:function(Num){
-              if(typeof this.formatNumber == 'string'){
+              if(this.formatNumber == 'on'){
                 Num += '';
                 Num = Num.replace(/,/g, '');
                 x = Num.split('.');
