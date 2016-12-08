@@ -39,6 +39,15 @@ $ bower install glon-gl-form
 <gl-form-input label="Input label"></gl-form-input>
 <gl-form-textarea label="Input label"></gl-form-textarea>
 ```
+format-number 
+```bash
+<gl-form-input label="Input label" id="price" format-number="on"></gl-form-input> //12,344,231.1223 
+<gl-form-textarea label="Input label" format-number="on"></gl-form-textarea>
+```
+function getValue 
+```bash
+this.$$('#price').getValue(); //12344231.1223 
+```
 
 #gl-form-dropdown-menu
 ![gl-form-dropdown-menu](http://i.imgur.com/PP6SHgd.png)
