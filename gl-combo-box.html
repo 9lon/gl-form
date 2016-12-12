@@ -85,7 +85,10 @@
       padding-right: 60px;
       margin-right: -32px;
     }
-
+    vaadin-combo-box-overlay{
+        font-family: 'CSChatThaiUI', sans-serif !important;
+        -webkit-font-smoothing: antialiased;
+    }
     paper-input-container {
         --paper-input-container-disabled:{
             opacity: 1;
@@ -296,7 +299,8 @@
         this.updateStyles();
     },
     onFocus:function(e){
-        this.customStyle['--paper-input-container-color'] =  "#737373";
+        this.customStyle['--paper-input-label-color-success'] = "#737373";
+        this.customStyle['--paper-input-border-success'] =  "1px solid #737373";
         this.updateStyles();
     },
 

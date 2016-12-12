@@ -159,22 +159,27 @@
             },
             numberPattle:function(Num){
               if(this.formatNumber == 'on'){
-                // console.log(Num);
-                Num += '';
-                Num = Num.replace(/,/g, '');
-                x = Num.split('.');
-                x1 = x[0];
-                x2 = x.length > 1 ? '.' + x[1] : '';
-                var rgx = /(\d+)(\d{3})/;
-                while (rgx.test(x1))
-                x1 = x1.replace(rgx, '$1' + ',' + '$2');
-                // let charReg = /[a-z||A-Z||ก-ฮ]/;
-                // if(Num.match(charReg)){
-                //     this.sum = '';
-                //     x1 = '';
-                //     x2 = '';
-                // }
-                this.$$('input').value = x1 + x2;
+                // console.log('num',Num);
+                if(typeof Num == 'undefined'){
+                  return ''
+                }
+                else {
+                  Num += '';
+                  Num = Num.replace(/,/g, '');
+                  x = Num.split('.');
+                  x1 = x[0];
+                  x2 = x.length > 1 ? '.' + x[1] : '';
+                  var rgx = /(\d+)(\d{3})/;
+                  while (rgx.test(x1))
+                  x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                  // let charReg = /[a-z||A-Z||ก-ฮ]/;
+                  // if(Num.match(charReg)){
+                  //     this.sum = '';
+                  //     x1 = '';
+                  //     x2 = '';
+                  // }
+                  this.$$('input').value = x1 + x2;
+                }
               }
             },
             InputOnBlur : function(e){
@@ -186,6 +191,7 @@
                 this.updateStyles();
             },
             InputOnFocus:function(e){        
+                this.customStyle['--paper-input-label-color-success'] = "#737373";
                 this.customStyle['--paper-input-label-color-success'] = "#737373";
                 this.updateStyles();
             },
