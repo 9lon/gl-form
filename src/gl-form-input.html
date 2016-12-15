@@ -121,7 +121,8 @@
             accept$="[[accept]]"
             multiple$="[[multiple]]" 
             on-blur="InputOnBlur" 
-            on-focus="InputOnFocus">
+            on-focus="InputOnFocus"
+            on-input="disText">
             <content select="[suffix]"></content>
         <template is="dom-if" if="[[errorMessage]]">
             <paper-input-error aria-live="assertive">[[errorMessage]]</paper-input-error>
@@ -157,6 +158,18 @@
             checkFormat:function(){
               return typeof this.formatNumber == 'string';
             },
+            disText:function(){
+               if(this.formatNumber == 'on'){
+                  let charReg = /[a-z||A-Z||ก-ฮ||]/;
+                  let pattern = /[^-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+                  if(this.$$('input').value.match(charReg)){
+                    // console.log('error');
+                    this.$$('input').value  = this.$$('input').value.replace(charReg,'');
+                            // x2 = '';
+                  }
+                  
+               }
+            },
             numberPattle:function(Num){
               if(this.formatNumber == 'on'){
                 // console.log('num',Num);
@@ -164,23 +177,18 @@
                   return ''
                 }
                 else {
-                  Num += '';
-                  Num = Num.replace(/,/g, '');
-                  x = Num.split('.');
-                  x1 = x[0];
-                  x2 = x.length > 1 ? '.' + x[1] : '';
-                  var rgx = /(\d+)(\d{3})/;
-                  while (rgx.test(x1))
-                  x1 = x1.replace(rgx, '$1' + ',' + '$2');
-                  // let charReg = /[a-z||A-Z||ก-ฮ]/;
-                  // if(Num.match(charReg)){
-                  //     this.sum = '';
-                  //     x1 = '';
-                  //     x2 = '';
-                  // }
-                  this.$$('input').value = x1 + x2;
+                    Num += '';
+                    Num = Num.replace(/,/g, '');
+                    x = Num.split('.');
+                    x1 = x[0];
+                    x2 = x.length > 1 ? '.' + x[1] : '';
+                    var rgx = /(\d+)(\d{3})/;
+                    while (rgx.test(x1))
+                    x1 = x1.replace(rgx, '$1' + ',' + '$2');   
+                    this.$$('input').value = x1 + x2;
+                   
+                  }
                 }
-              }
             },
             InputOnBlur : function(e){
               e.target.validate;

@@ -30,6 +30,22 @@
       padding: 0;
     }
 
+     input::-webkit-input-placeholder {
+        color: var(--paper-input-container-color, --secondary-text-color);
+      }
+
+      input:-moz-placeholder {
+        color: var(--paper-input-container-color, --secondary-text-color);
+      }
+
+      input::-moz-placeholder {
+        color: var(--paper-input-container-color, --secondary-text-color);
+      }
+
+      input:-ms-input-placeholder {
+        color: var(--paper-input-container-color, --secondary-text-color);
+      } 
+
     paper-icon-button.clear-button,
     paper-icon-button.toggle-button,
     :host ::content paper-icon-button.clear-button,
@@ -321,6 +337,11 @@
     },
     reset:function(){
       // this.value="";
+      if(this.required == true){
+              this.$$('input').removeAttribute('required');
+              this.$$('input').validate();
+              this.$$('input').setAttribute("required", true);
+      }
       this.customStyle['--paper-input-border-success'] =  "1px solid #737373";
       this.customStyle['--paper-input-label-color-success'] = "#737373";
       this.customStyle['--paper-input-container-color'] =  "#737373";
