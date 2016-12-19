@@ -27,9 +27,10 @@
         .container {
             padding: 10px;
         }
-       *{
-            font-family: Arial, Helvetica, sans-serif;
-        }
+        /*gl-combo-box{
+            font-family: 'CSChatThaiUI', sans-serif !important;
+            -webkit-font-smoothing: antialiased;
+        }*/
         /*gl-form-input{
             --paper-input-container-input:{
                  text-align: right;
@@ -47,29 +48,27 @@
 
             <section-content data="data1">
                
-                <gl-form-input label="Money" id="price" value="12321" format-number="on"></gl-form-input>
+                <gl-form-input label="Money" id="price" value="12321" format-number="on" required></gl-form-input>
+                <gl-form-input label="Money" id="price" value="12321" format-number="on" required></gl-form-input>
                 <gl-form-textarea label="text" disabled value="1234321" format-number="on"></gl-form-textarea>
                 <paper-button raised on-tap="getValue">GetValue</paper-button>
                   <gl-combo-box label="ทดสอบ" id="resetInput" class="skillLevels" placeholder="ทดสอบ" items="[[skillLevels]]" value="Beginner" required error-message="needs some text!"></gl-combo-box>
-            </section-content>
-
-            <section-content data="data2">
-                <!--<gl-form-label-input id="resetInput" label="Money" value="124599200.32"></gl-form-label-input>
-                 <gl-form-input disabled$={{stat}} id="resetInput" label="input"></gl-form-input>
-                <gl-form-input id="resetInput" label="this input" required auto-validate error-message="needs some text!" value="12345321"></gl-form-input>
-                <gl-form-textarea id="resetInput" label="Text" value="12345" auto-validate disabled></gl-form-textarea>
-                  <gl-form-dropdown-menu id="resetInput" validate label="ทดสอบ (dropdown menu)">
+                  
+                   <gl-form-dropdown-menu id="resetInput" label="ทดสอบ">
                     <paper-listbox class="dropdown-content">
                         <paper-item value="ตัวอักษร">ตัวอักษร</paper-item>
                         <paper-item value="ขนาด">ขนาด</paper-item>
                         <paper-item value="สี">สี</paper-item>
                         <paper-item value="ความถูกต้อง">ความถูกต้อง</paper-item>
                     </paper-listbox>
-                </gl-form-dropdown-menu>
-                <gl-form-textarea id="resetInput" label="text" error-message="needs some text!"></gl-form-textarea>
-                <paper-button on-tap="resetInput"raised>Reset</paper-button>
-                <paper-button raised on-tap="edit">Edit</paper-button>  
-                <gl-combo-box id="resetInput" label="Skill level" class="skillLevels" items="[[skillLevels]]" value="Beginner" required auto-validate error-message="needs some text!"></gl-combo-box>-->
+                </gl-form-dropdown-menu> 
+            </section-content>
+
+            <section-content data="data2">
+               
+                <!--<gl-form-textarea id="resetInput" label="Text" value="12345" auto-validate disabled></gl-form-textarea>-->
+                
+                
             </section-content>
 
             <section-content data="data3">

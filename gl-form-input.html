@@ -78,14 +78,23 @@
       .hide{
         display : var(--paper-input-show-number);
       }
+      .requried{
+        color : #FE2E2E;
+        padding: 2px;
+        margin-top: -10px;
+        /*position: relative;
+        top: 22px;
+        left: -5px;*/
+      }
     </style>
-    <template>
+    <template>  
+    
    <paper-input-container no-label-float="[[noLabelFloat]]" always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel,placeholder)]]" auto-validate$="{{autoValidate}}" disabled$="[[disabled]]" invalid="[[invalid]]">
-      
+        
         <content select="[prefix]"></content>
-
-        <label hidden$="[[!label]]" aria-hidden="true" for="input">[[label]]</label>
-
+        
+        <label hidden$="[[!label]]" aria-hidden="true" for="input">[[label]]<span class="requried" hidden>*</span></label>
+      
         <input is="iron-input" id="input"
             aria-labelledby$="[[_ariaLabelledBy]]"
             aria-describedby$="[[_ariaDescribedBy]]"
@@ -153,10 +162,19 @@
                   type: String,
                   value: 'off',
                   observer:'checkFormat' 
+                },
+                required:{
+                  observer:'checkRequired'
                 }
             },
             checkFormat:function(){
               return typeof this.formatNumber == 'string';
+            },
+            checkRequired:function(e){
+              if(e == true){
+                this.$$('.requried').removeAttribute('hidden');
+              }
+               
             },
             disText:function(){
                if(this.formatNumber == 'on'){
