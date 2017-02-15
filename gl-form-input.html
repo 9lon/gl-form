@@ -131,7 +131,8 @@
             multiple$="[[multiple]]" 
             on-blur="InputOnBlur" 
             on-focus="InputOnFocus"
-            on-input="disText">
+            on-input="disText"
+            >
             <content select="[suffix]"></content>
         <template is="dom-if" if="[[errorMessage]]">
             <paper-input-error aria-live="assertive">[[errorMessage]]</paper-input-error>
@@ -165,6 +166,10 @@
                 },
                 required:{
                   observer:'checkRequired'
+                },
+                activeColor:{
+                  type: String,
+                  value: 'on'
                 }
             },
             checkFormat:function(){
@@ -172,9 +177,9 @@
             },
             checkRequired:function(e){
               if(e == true){
+                console.log('e',e)
                 this.$$('.requried').removeAttribute('hidden');
-              }
-               
+              }   
             },
             disText:function(){
                if(this.formatNumber == 'on'){
@@ -189,6 +194,13 @@
                }
             },
             numberPattle:function(Num){
+               if(this.value != ''){
+                this.$$('.requried').setAttribute("hidden",true);
+               }
+               else if(this.$$('input').required == true){
+                 this.$$('.requried').removeAttribute('hidden');
+               }
+
               if(this.formatNumber == 'on'){
                 // console.log('num',Num);
                 if(typeof Num == 'undefined'){
@@ -209,17 +221,22 @@
                 }
             },
             InputOnBlur : function(e){
+              if(this.activeColor == 'on'){
               e.target.validate;
                 if(e.target.validate()){
                     this.customStyle['--paper-input-border-success'] =  "1px solid green";
                     this.customStyle['--paper-input-label-color-success'] = "green";
                 }
                 this.updateStyles();
+              }
+              
             },
-            InputOnFocus:function(e){        
-                this.customStyle['--paper-input-label-color-success'] = "#737373";
-                this.customStyle['--paper-input-label-color-success'] = "#737373";
-                this.updateStyles();
+            InputOnFocus:function(e){
+                if(this.activeColor == 'off'){        
+                  this.customStyle['--paper-input-label-color-success'] = "#737373";
+                  this.customStyle['--paper-input-label-color-success'] = "#737373";
+                  this.updateStyles();
+                }
             },
             getValue:function(){
               this.value.toString();
