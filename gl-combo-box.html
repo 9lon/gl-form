@@ -1,4 +1,3 @@
-
 <link rel="import" href="./../polymer/polymer.html">
 <link rel="import" href="./../iron-input/iron-input.html">
 <link rel="import" href="./../iron-validatable-behavior/iron-validatable-behavior.html">
@@ -19,188 +18,156 @@
 
 <dom-module id="gl-combo-box">
   <style include="vaadin-combo-box-shared-styles">
-    :host {
-       display: block;
-       padding: 8px 0;
+     :host {
+      display: block;
+      padding: 8px 0;
+      --shadow-elevation-2dp:{
+         font-family: 'CSChatThaiUI', sans-serif !important;
+        -webkit-font-smoothing: antialiased;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+      }
     }
-
-    :host > #overlay {
+    
+     :host>#overlay {
       display: none;
     }
-
+    
     paper-input-container {
       position: relative;
       padding: 0;
     }
-
-     input::-webkit-input-placeholder {
-        color: var(--paper-input-container-color, --secondary-text-color);
-      }
-
-      input:-moz-placeholder {
-        color: var(--paper-input-container-color, --secondary-text-color);
-      }
-
-      input::-moz-placeholder {
-        color: var(--paper-input-container-color, --secondary-text-color);
-      }
-
-      input:-ms-input-placeholder {
-        color: var(--paper-input-container-color, --secondary-text-color);
-      } 
-
+    
+    input::-webkit-input-placeholder {
+      color: var(--paper-input-container-color, --secondary-text-color);
+    }
+    
+    input:-moz-placeholder {
+      color: var(--paper-input-container-color, --secondary-text-color);
+    }
+    
+    input::-moz-placeholder {
+      color: var(--paper-input-container-color, --secondary-text-color);
+    }
+    
+    input:-ms-input-placeholder {
+      color: var(--paper-input-container-color, --secondary-text-color);
+    }
+    
     paper-icon-button.clear-button,
     paper-icon-button.toggle-button,
-    :host ::content paper-icon-button.clear-button,
-    :host ::content paper-icon-button.toggle-button {
+     :host ::content paper-icon-button.clear-button,
+     :host ::content paper-icon-button.toggle-button {
       position: absolute;
       bottom: -4px;
       right: -4px;
-
       line-height: 18px !important;
       width: 32px;
       height: 32px;
       padding: 4px;
       text-align: center;
-
       color: rgba(0, 0, 0, .38);
       cursor: pointer;
       margin-top: -1px;
       --paper-icon-button-ink-color: rgba(0, 0, 0, .54);
     }
-
+    
     paper-input-container paper-icon-button.clear-button,
     paper-input-container ::content paper-icon-button.clear-button {
       right: 28px;
     }
-
+    
     paper-input-container paper-icon-button:hover,
     paper-input-container ::content paper-icon-button:hover,
-    :host([opened]) paper-input-container paper-icon-button,
-    :host([opened]) paper-input-container ::content paper-icon-button {
+     :host([opened]) paper-input-container paper-icon-button,
+     :host([opened]) paper-input-container ::content paper-icon-button {
       color: rgba(0, 0, 0, .54);
     }
-
-    :host([opened]) paper-input-container ::content paper-icon-button:hover,
-    :host([opened]) paper-input-container paper-icon-button:hover {
+    
+     :host([opened]) paper-input-container ::content paper-icon-button:hover,
+     :host([opened]) paper-input-container paper-icon-button:hover {
       color: rgba(0, 0, 0, .86);
     }
-
-    :host([opened]) paper-input-container {
+    
+     :host([opened]) paper-input-container {
       /* Keep the paper-input-container above the dropdown. */
       z-index: 20;
     }
-
+    
     #input::-ms-clear {
       display: none;
     }
-
+    
     #input {
       box-sizing: border-box;
       padding-right: 28px;
     }
-
-    :host([opened][has-value]) #input {
+    
+     :host([opened][has-value]) #input {
       padding-right: 60px;
       margin-right: -32px;
     }
+    
     paper-input-container {
-        --paper-input-container-disabled:{
-            opacity: 1;
-        }
-        --paper-input-container-underline:{
-          border-bottom: var(--paper-input-border-success);
-        }
-        --paper-input-container-underline-disabled:{
-            display: none;
-        }
-        --paper-input-container-label:{
-          font-size:var(--gl-fontsize-label);
-          font-size: 22px;
-          font-family: 'rsuregular';
-          font-weight: bold;
-          color: var(--paper-input-label-color-success);
-        }
-        --paper-input-container-input:{
-          font-family: 'CSChatThaiUI', sans-serif !important;
-          -webkit-font-smoothing: antialiased;
-        }
+      --paper-input-container-disabled: {
+        opacity: 1;
+      }
+      --paper-input-container-underline: {
+        border-bottom: var(--paper-input-border-success);
+      }
+      --paper-input-container-underline-disabled: {
+        display: none;
+      }
+      --paper-input-container-label-floating: {
+        font-size: 20px;
+      }
+      --paper-input-container-label: {
+        font-size: var(--gl-fontsize-label);
+        font-size: 18px;
+        font-family: 'CSChatThaiUI', sans-serif !important;
+        -webkit-font-smoothing: antialiased;
+        font-weight: bold;
+        color: var(--paper-input-label-color-success);
+      }
+      --paper-input-container-input: {
+        font-family: 'CSChatThaiUI', sans-serif !important;
+        -webkit-font-smoothing: antialiased;
+      }
     }
-     .requried{
-        color : #FE2E2E;
-        padding: 2px;
-        margin-top: -10px;
-        /*position: relative;
+    
+    .requried {
+      color: #FE2E2E;
+      padding: 2px;
+      margin-top: -10px;
+      /*position: relative;
         top: 22px;
         left: -5px;*/
-      }
-    
-    
+    }
   </style>
 
   <template>
-    <paper-input-container
-          id="inputContainer"
-          disabled$="[[disabled]]"
-          no-label-float="[[noLabelFloat]]"
-          always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel,placeholder)]]"
-          auto-validate$="[[autoValidate]]"
-          invalid="[[invalid]]">
+    <paper-input-container id="inputContainer" disabled$="[[disabled]]" no-label-float="[[noLabelFloat]]" always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel,placeholder)]]"
+      auto-validate$="[[autoValidate]]" invalid="[[invalid]]">
       <label on-down="_preventDefault" id="label" hidden$="[[!label]]" aria-hidden="true" on-tap="_openAsync">[[label]]<span class="requried" hidden>*</span></label>
 
       <content select="[prefix]"></content>
 
-      <input
-          is="iron-input"
-          id="input"
-          type="text"
-          role="combobox"
-          autocomplete="off"
-          autocapitalize="none"
-          bind-value="{{_inputElementValue}}"
-          aria-labelledby="label"
-          aria-activedescendant$="[[_ariaActiveIndex]]"
-          aria-expanded$="[[_getAriaExpanded(opened)]]"
-          aria-autocomplete="list"
-          aria-owns="overlay"
-          disabled$="[[disabled]]"
-          invalid="{{invalid}}"
-          prevent-invalid-input="[[preventInvalidInput]]"
-          allowed-pattern="[[allowedPattern]]"
-          pattern$="[[pattern]]"
-          required$="[[required]]"
-          autofocus$="[[autofocus]]"
-          inputmode$="[[inputmode]]"
-          name$="[[name]]"
-          placeholder$="[[placeholder]]"
-          readonly$="[[readonly]]"
-          size$="[[size]]"
-          on-input="_inputValueChanged"
-          on-blur="onBlur"
-          on-change="_stopPropagation"
-          on-focus="onFocus"
-          key-event-target>
+      <input is="iron-input" id="input" type="text" role="combobox" autocomplete="off" autocapitalize="none" bind-value="{{_inputElementValue}}"
+        aria-labelledby="label" aria-activedescendant$="[[_ariaActiveIndex]]" aria-expanded$="[[_getAriaExpanded(opened)]]"
+        aria-autocomplete="list" aria-owns="overlay" disabled$="[[disabled]]" invalid="{{invalid}}" prevent-invalid-input="[[preventInvalidInput]]"
+        allowed-pattern="[[allowedPattern]]" pattern$="[[pattern]]" required$="[[required]]" autofocus$="[[autofocus]]" inputmode$="[[inputmode]]"
+        name$="[[name]]" placeholder$="[[placeholder]]" readonly$="[[readonly]]" size$="[[size]]" on-input="_inputValueChanged"
+        on-blur="onBlur" on-change="_stopPropagation" on-focus="onFocus" key-event-target>
 
       <content select="[suffix]"></content>
 
       <content select=".clear-button">
-        <paper-icon-button
-            id="clearIcon"
-            tabindex="-1"
-            icon="vaadin-combo-box:clear"
-            on-down="_preventDefault"
-            class="clear-button small">
+        <paper-icon-button id="clearIcon" tabindex="-1" icon="vaadin-combo-box:clear" on-down="_preventDefault" class="clear-button small">
         </paper-icon-button>
       </content>
 
       <content select=".toggle-button">
-        <paper-icon-button
-            id="toggleIcon"
-            tabindex="-1"
-            icon="vaadin-combo-box:arrow-drop-down"
-            aria-controls="overlay"
-            on-down="_preventDefault"
-            class="toggle-button rotate-on-open">
+        <paper-icon-button id="toggleIcon" tabindex="-1" icon="vaadin-combo-box:arrow-drop-down" aria-controls="overlay" on-down="_preventDefault"
+          class="toggle-button rotate-on-open">
         </paper-icon-button>
       </content>
 
@@ -209,15 +176,9 @@
       </template>
     </paper-input-container>
 
-    <vaadin-combo-box-overlay
-        id="overlay"
-        _aria-active-index="{{_ariaActiveIndex}}"
-        position-target="[[_getPositionTarget()]]"
-        _focused-index="[[_focusedIndex]]"
-        _item-label-path="[[itemLabelPath]]"
-        on-down="_onOverlayDown"
-        on-mousedown="_preventDefault"
-        vertical-offset="2">
+    <vaadin-combo-box-overlay id="overlay" _aria-active-index="{{_ariaActiveIndex}}" position-target="[[_getPositionTarget()]]"
+      _focused-index="[[_focusedIndex]]" _item-label-path="[[itemLabelPath]]" on-down="_onOverlayDown" on-mousedown="_preventDefault"
+      vertical-offset="2">
     </vaadin-combo-box-overlay>
   </template>
 </dom-module>
@@ -273,7 +234,7 @@
       required: {
         type: Boolean,
         value: false,
-        observer:'checkRequired'
+        observer: 'checkRequired'
       },
 
       errorMessage: {
@@ -307,7 +268,7 @@
       }
 
     },
-    attached: function() {
+    attached: function () {
       this._setInputElement(this.$.input);
 
       // Use the default toggle/clear or one replaced in light DOM.
@@ -315,50 +276,50 @@
       this._clearElement = Polymer.dom(this).querySelector('.clear-button') || this.$.clearIcon;
     },
 
-    onBlur:function(e){
-      if(e.target.validate()){
-            this.customStyle['--paper-input-border-success'] =  "1px solid green";
-            this.customStyle['--paper-input-label-color-success'] = "green";
-        }
-        this.updateStyles();
+    onBlur: function (e) {
+      if (e.target.validate()) {
+        this.customStyle['--paper-input-border-success'] = "1px solid green";
+        this.customStyle['--paper-input-label-color-success'] = "green";
+      }
+      this.updateStyles();
     },
-    onFocus:function(e){
-        this.customStyle['--paper-input-label-color-success'] = "#737373";
-        this.customStyle['--paper-input-border-success'] =  "1px solid #737373";
-        this.updateStyles();
+    onFocus: function (e) {
+      this.customStyle['--paper-input-label-color-success'] = "#737373";
+      this.customStyle['--paper-input-border-success'] = "1px solid #737373";
+      this.updateStyles();
     },
 
-    _computeAlwaysFloatLabel: function(alwaysFloatLabel, placeholder) {
+    _computeAlwaysFloatLabel: function (alwaysFloatLabel, placeholder) {
       return placeholder || alwaysFloatLabel;
     },
 
-    _getPositionTarget: function() {
+    _getPositionTarget: function () {
       return this.$.inputContainer;
     },
 
-    _getAriaExpanded: function(value) {
+    _getAriaExpanded: function (value) {
       return value.toString();
     },
-    observers:['obValue(value)'],
-    obValue:function(val){
+    observers: ['obValue(value)'],
+    obValue: function (val) {
       this.fire('combo-changed', val);
     },
-    checkRequired:function(e){
-      if(e == true){
+    checkRequired: function (e) {
+      if (e == true) {
         this.$$('.requried').removeAttribute('hidden');
       }
-      
+
     },
-    reset:function(){
+    reset: function () {
       // this.value="";
-      if(this.required == true){
-              this.$$('input').removeAttribute('required');
-              this.$$('input').validate();
-              this.$$('input').setAttribute("required", true);
+      if (this.required == true) {
+        this.$$('input').removeAttribute('required');
+        this.$$('input').validate();
+        this.$$('input').setAttribute("required", true);
       }
-      this.customStyle['--paper-input-border-success'] =  "1px solid #737373";
+      this.customStyle['--paper-input-border-success'] = "1px solid #737373";
       this.customStyle['--paper-input-label-color-success'] = "#737373";
-      this.customStyle['--paper-input-container-color'] =  "#737373";
+      this.customStyle['--paper-input-container-color'] = "#737373";
       this.updateStyles();
     }
   });
