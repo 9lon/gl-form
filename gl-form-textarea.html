@@ -35,18 +35,23 @@
     paper-input-container {
       --paper-input-container-disabled: {
         opacity: 1;
+        @apply(--gl-form-textarea-container-disabled);
       }
       --paper-input-container-label: {
         color: var(--paper-input-label-color-success);
+        @apply(--gl-form-textarea-container-label);
       }
       --paper-input-container-underline: {
         border-bottom: var(--paper-input-border-success);
+        @apply(--gl-form-textarea-container-underline);
       }
       --paper-input-container-underline-disabled: {
         display: none;
+        @apply(--gl-form-textarea-container-underline-disabled);
       }
       --paper-input-container-label-floating: {
         font-size: 20px;
+        @apply(--gl-form-textarea-container-label-floating);
       }
     }
   </style>

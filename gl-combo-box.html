@@ -110,15 +110,19 @@
     paper-input-container {
       --paper-input-container-disabled: {
         opacity: 1;
+        @apply(--gl-combo-box-container-container-disabled);
       }
       --paper-input-container-underline: {
         border-bottom: var(--paper-input-border-success);
+        @apply(--gl-combo-box-container-underline);
       }
       --paper-input-container-underline-disabled: {
         display: none;
+        @apply(--gl-combo-box-container-underline-disabled);
       }
       --paper-input-container-label-floating: {
         font-size: 20px;
+        @apply(--gl-combo-box-container-label-floating);
       }
       --paper-input-container-label: {
         font-size: var(--gl-fontsize-label);
@@ -127,10 +131,12 @@
         -webkit-font-smoothing: antialiased;
         font-weight: bold;
         color: var(--paper-input-label-color-success);
+        @apply(--gl-combo-box-container-label);
       }
       --paper-input-container-input: {
         font-family: 'CSChatThaiUI', sans-serif !important;
         -webkit-font-smoothing: antialiased;
+        @apply(--gl-combo-box-container-input);
       }
     }
     

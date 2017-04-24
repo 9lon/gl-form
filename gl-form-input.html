@@ -67,18 +67,23 @@
     paper-input-container {
       --paper-input-container-disabled: {
         opacity: 1;
+        @apply(--gl-form-input-container-disabled);
       }
       --paper-input-container-label: {
         color: var(--paper-input-label-color-success);
+        @apply(--gl-form-input-label-color-success);
       }
       --paper-input-container-underline: {
         border-bottom: var(--paper-input-border-success);
+        @apply(--gl-form-input-border-success);
       }
       --paper-input-container-underline-disabled: {
         display: none;
+        @apply(--gl-form-input-container-underline-disabled);
       }
       --paper-input-container-label-floating: {
         font-size: 20px;
+        @apply(--gl-form-input-container-label-floating);
       }
     }
     
